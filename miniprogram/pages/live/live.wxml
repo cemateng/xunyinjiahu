@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="section-title">📺 直播带货</view>
+  <view class="card" style="text-align:center;padding:80rpx 40rpx;">
+    <text style="font-size:80rpx;display:block;">🎬</text>
+    <text style="font-size:30rpx;color:#3E2723;display:block;margin:24rpx 0;">直播功能即将上线</text>
+    <text style="font-size:24rpx;color:#8D6E63;">学生团队将通过直播推广贾湖特色农产品<br/>敬请期待！</text>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<!-- 智能导览页面 -->
+<view class="container">
+  <!-- AR扫描入口 -->
+  <view class="ar-entry card" bindtap="startAR">
+    <view class="ar-icon">📷</view>
+    <view>
+      <text class="ar-title">AR文物识别</text>
+      <text class="ar-desc">扫描骨笛、遗址文物，获取详细信息</text>
+    </view>
+    <text class="arrow">›</text>
+  </view>
+
+  <!-- 当前位置 -->
+  <view class="section-title">📍 当前位置</view>
+  <view class="card map-container">
+    <map longitude="{{longitude}}" latitude="{{latitude}}"
+         scale="14" show-location
+         markers="{{markers}}" class="mini-map"
+         bindmarkertap="onMarkerTap" />
+    <text class="location-text">{{currentLocation}}</text>
+  </view>
+
+  <!-- 附近景点/展品列表 -->
+  <view class="section-title">附近文化景点</view>
+  <view class="spot-list">
+    <view class="spot-item card" wx:for="{{nearbySpots}}" wx:key="id"
+          bindtap="playAudio" data-id="{{item.id}}">
+      <image src="{{item.image}}" mode="aspectFill" class="spot-img" />
+      <view class="spot-info">
+        <text class="spot-name">{{item.name}}</text>
+        <text class="spot-desc">{{item.brief}}</text>
+        <text class="spot-dist">距您 {{item.distance}}m</text>
+      </view>
+      <view class="audio-play-btn">▶</view>
+    </view>
+  </view>
+
+  <!-- 语音导览弹窗（使用共享组件） -->
+  <audio-player
+    visible="{{showAudioPanel}}"
+    title="{{currentSpot.name}}"
+    audioUrl="{{currentSpot.audioUrl}}"
+    duration="{{currentSpot.duration}}"
+    bind:prev="onAudioPrev"
+    bind:next="onAudioNext"
+    bind:close="onAudioClose"
+  />
+</view>

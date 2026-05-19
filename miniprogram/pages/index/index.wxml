@@ -1,0 +1,77 @@
+<!-- 首页 -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input placeholder="搜索贾湖文化、研学路线、文创产品..." />
+    <text class="icon-search">🔍</text>
+  </view>
+
+  <!-- 轮播Banner -->
+  <swiper class="banner" autoplay interval="4000" circular>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image src="{{item.image}}" mode="aspectFill" />
+      <view class="banner-text">{{item.title}}</view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 核心功能入口 -->
+  <view class="feature-grid">
+    <view class="feature-item" bindtap="goVR">
+      <view class="feature-icon vr-icon">🏛️</view>
+      <text>VR云游</text>
+    </view>
+    <view class="feature-item" bindtap="goStudy">
+      <view class="feature-icon study-icon">📚</view>
+      <text>研学预约</text>
+    </view>
+    <view class="feature-item" bindtap="goGuide">
+      <view class="feature-icon guide-icon">🎧</view>
+      <text>智能导览</text>
+    </view>
+    <view class="feature-item" bindtap="goMall">
+      <view class="feature-icon mall-icon">🎁</view>
+      <text>文创商城</text>
+    </view>
+    <view class="feature-item" bindtap="goHomestay">
+      <view class="feature-icon home-icon">🏡</view>
+      <text>民宿预订</text>
+    </view>
+    <view class="feature-item" bindtap="goLive">
+      <view class="feature-icon live-icon">📺</view>
+      <text>直播带货</text>
+    </view>
+  </view>
+
+  <!-- 贾湖文化简介 -->
+  <view class="section-title">贾湖骨笛 · 九千年文明之源</view>
+  <view class="card intro-card">
+    <image src="{{introImage}}" mode="aspectFill" class="intro-img" />
+    <view class="intro-text">
+      贾湖骨笛出土于河南漯河贾湖遗址，距今约9000年，是世界上最早的
+      可吹奏乐器，被誉为"中华文明之源"……
+    </view>
+    <view class="btn-outline" bindtap="goGuide">了解更多</view>
+  </view>
+
+  <!-- 热门研学路线 -->
+  <view class="section-title">热门研学路线</view>
+  <scroll-view scroll-x class="route-scroll">
+    <view class="route-card" wx:for="{{hotRoutes}}" wx:key="id" bindtap="goRouteDetail" data-id="{{item.id}}">
+      <image src="{{item.cover}}" mode="aspectFill" />
+      <view class="route-info">
+        <text class="route-name">{{item.name}}</text>
+        <text class="route-price">¥{{item.price}}/人</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 推荐文创 -->
+  <view class="section-title">精选文创</view>
+  <view class="goods-grid">
+    <view class="goods-card" wx:for="{{featuredGoods}}" wx:key="id" bindtap="goGoodsDetail" data-id="{{item.id}}">
+      <image src="{{item.image}}" mode="aspectFill" />
+      <text class="goods-name">{{item.name}}</text>
+      <text class="goods-price">¥{{item.price}}</text>
+    </view>
+  </view>
+</view>

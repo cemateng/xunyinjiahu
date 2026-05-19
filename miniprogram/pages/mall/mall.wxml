@@ -1,0 +1,27 @@
+<!-- 文创商城页面 -->
+<view class="container">
+  <!-- 分类导航 -->
+  <scroll-view scroll-x class="cat-scroll">
+    <text class="cat-item {{activeCat===item?'active':''}}"
+          wx:for="{{categories}}" wx:key="*this"
+          bindtap="switchCat" data-cat="{{item}}">{{item}}</text>
+  </scroll-view>
+
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input placeholder="搜索文创商品..." bindinput="onSearch" />
+  </view>
+
+  <!-- 商品列表 -->
+  <view class="goods-grid">
+    <goods-card wx:for="{{filteredGoods}}" wx:key="id"
+                goods="{{item}}" bind:tap="goDetail" />
+  </view>
+  <view class="empty" wx:if="{{filteredGoods.length===0}}">暂无商品</view>
+
+  <!-- 购物车浮动按钮 -->
+  <view class="cart-float" bindtap="goCart">
+    <text class="cart-icon">🛒</text>
+    <text class="cart-badge" wx:if="{{cartCount>0}}">{{cartCount}}</text>
+  </view>
+</view>

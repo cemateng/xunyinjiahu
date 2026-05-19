@@ -1,0 +1,57 @@
+<!-- 商品详情页 -->
+<view class="container">
+  <!-- 商品图片轮播 -->
+  <swiper class="img-swiper" wx:if="{{goods.images && goods.images.length>0}}">
+    <swiper-item wx:for="{{goods.images}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill" class="swiper-img" />
+    </swiper-item>
+  </swiper>
+  <image src="{{goods.image}}" mode="aspectFill" class="main-img" wx:else />
+
+  <!-- 商品信息 -->
+  <view class="card">
+    <text class="goods-name">{{goods.name}}</text>
+    <text class="goods-cat">{{goods.category}}</text>
+    <view class="price-row">
+      <text class="price">¥{{goods.price}}</text>
+      <text class="original" wx:if="{{goods.originalPrice}}">¥{{goods.originalPrice}}</text>
+    </view>
+    <text class="sales">已售 {{goods.sales}} 件 | 库存 {{goods.stock}} 件</text>
+  </view>
+
+  <!-- 商品描述 -->
+  <view class="section-title">商品详情</view>
+  <view class="card">
+    <text class="desc">{{goods.desc}}</text>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <view class="cart-btn" bindtap="goCart">
+      <text>🛒</text>
+      <text class="cart-count" wx:if="{{cartCount>0}}">{{cartCount}}</text>
+    </view>
+    <view class="btn-outline add-cart" bindtap="addToCart">加入购物车</view>
+    <view class="btn-primary buy-now" bindtap="buyNow">立即购买</view>
+  </view>
+</view>
+
+<!-- 购买确认弹窗 -->
+<view class="detail-mask" wx:if="{{showBuy}}">
+  <view class="buy-panel">
+    <text class="buy-title">确认订单</text>
+    <view class="buy-row"><text>商品</text><text>{{goods.name}}</text></view>
+    <view class="buy-row"><text>单价</text><text>¥{{goods.price}}</text></view>
+    <view class="buy-row">
+      <text>数量</text>
+      <view class="qty-ctrl">
+        <text bindtap="decrease">−</text>
+        <text>{{buyCount}}</text>
+        <text bindtap="increase">+</text>
+      </view>
+    </view>
+    <view class="buy-row total"><text>合计</text><text class="total-price">¥{{goods.price * buyCount}}</text></view>
+    <view class="btn-primary" bindtap="confirmBuy">确认支付</view>
+    <view class="btn-cancel" bindtap="cancelBuy">取消</view>
+  </view>
+</view>

@@ -1,0 +1,124 @@
+<!-- 研学预约页面 -->
+<view class="container">
+  <!-- 顶部筛选 -->
+  <scroll-view scroll-x class="tag-scroll">
+    <text class="tag {{activeTag==='全部'?'active':''}}"
+          wx:for="{{tags}}" wx:key="*this"
+          bindtap="filterByTag" data-tag="{{item}}">{{item}}</text>
+  </scroll-view>
+
+  <!-- 路线列表 -->
+  <view class="route-list">
+    <view class="route-card card" wx:for="{{filteredRoutes}}" wx:key="id"
+          bindtap="showDetail" data-id="{{item.id}}">
+      <image src="{{item.cover}}" mode="aspectFill" class="route-cover" />
+      <view class="route-body">
+        <text class="route-name">{{item.name}}</text>
+        <view class="route-tags">
+          <text class="r-tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="t">{{t}}</text>
+        </view>
+        <view class="route-meta">
+          <text>🕐 {{item.duration}}</text>
+          <text>👤 {{item.ageRange}}</text>
+          <text>👥 限{{item.maxPeople}}人</text>
+        </view>
+        <view class="route-bottom">
+          <text class="route-price">¥{{item.price}}<text class="per">/人</text></text>
+          <view class="btn-book" bindtap="quickBook" data-id="{{item.id}}">立即预约</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 路线详情弹窗 -->
+<view class="detail-mask" wx:if="{{showDetail}}" bindtap="closeDetail">
+  <view class="detail-panel" catchtap="">
+    <image src="{{currentRoute.cover}}" mode="aspectFill" class="detail-cover" />
+    <view class="detail-close" bindtap="closeDetail">✕</view>
+    <scroll-view scroll-y class="detail-scroll">
+      <text class="detail-name">{{currentRoute.name}}</text>
+      <view class="detail-tags">
+        <text class="r-tag" wx:for="{{currentRoute.tags}}" wx:key="*this" wx:for-item="t">{{t}}</text>
+      </view>
+      <view class="detail-meta">
+        <text>🕐 {{currentRoute.duration}}</text>
+        <text>👤 {{currentRoute.ageRange}}</text>
+        <text>👥 限{{currentRoute.maxPeople}}人</text>
+        <text class="detail-price">¥{{currentRoute.price}}/人</text>
+      </view>
+
+      <view class="section-title">课程亮点</view>
+      <view class="highlight-list">
+        <text class="highlight-item" wx:for="{{currentRoute.highlights}}" wx:key="*this">✨ {{item}}</text>
+      </view>
+
+      <view class="section-title">导师介绍</view>
+      <view class="teacher-card" wx:if="{{currentRoute.teacher}}">
+        <image src="{{currentRoute.teacher.avatar}}" class="teacher-avatar" mode="aspectFill" />
+        <view>
+          <text class="teacher-name">{{currentRoute.teacher.name}}</text>
+          <text class="teacher-title">{{currentRoute.teacher.title}}</text>
+        </view>
+      </view>
+
+      <view class="section-title">行程安排</view>
+      <view class="schedule" wx:for="{{currentRoute.schedule}}" wx:key="day">
+        <text class="day-title">第{{item.day}}天</text>
+        <text class="day-item" wx:for="{{item.items}}" wx:key="*this" wx:for-item="act">{{act}}</text>
+      </view>
+
+      <view class="btn-primary book-btn" bindtap="goBooking">立即预约（¥{{currentRoute.price}}/人）</view>
+      <view style="height: 40rpx;"></view>
+    </scroll-view>
+  </view>
+</view>
+
+<!-- 预约表单弹窗 -->
+<view class="detail-mask" wx:if="{{showForm}}" bindtap="closeForm">
+  <view class="form-panel" catchtap="">
+    <text class="form-title">研学预约</text>
+    <text class="form-route">{{currentRoute.name}}</text>
+
+    <view class="form-group">
+      <text class="form-label">预约日期</text>
+      <picker mode="date" start="{{today}}" bindchange="onDateChange">
+        <view class="form-picker">{{booking.date || '请选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">人数</text>
+      <input class="form-input" type="number" placeholder="请输入人数" value="{{booking.count}}" bindinput="onCountInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">联系人</text>
+      <input class="form-input" placeholder="请输入姓名" value="{{booking.name}}" bindinput="onNameInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">联系电话</text>
+      <input class="form-input" type="number" placeholder="请输入手机号" value="{{booking.phone}}" bindinput="onPhoneInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">备注</text>
+      <textarea class="form-textarea" placeholder="如有特殊需求请留言" bindinput="onRemarkInput" />
+    </view>
+
+    <view class="btn-primary" bindtap="submitBooking">确认预约</view>
+    <view class="btn-cancel" bindtap="closeForm">取消</view>
+  </view>
+</view>
+
+<!-- 预约成功 -->
+<view class="detail-mask" wx:if="{{showSuccess}}">
+  <view class="success-panel">
+    <text class="success-icon">🎉</text>
+    <text class="success-title">预约成功！</text>
+    <text class="success-msg">我们将尽快与您联系确认行程</text>
+    <text class="success-order">预约编号：{{orderNo}}</text>
+    <view class="btn-primary" bindtap="closeSuccess">确定</view>
+  </view>
+</view>

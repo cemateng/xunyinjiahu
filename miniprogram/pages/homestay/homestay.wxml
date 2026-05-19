@@ -1,0 +1,23 @@
+<!-- 民宿预订页面 -->
+<view class="container">
+  <view class="section-title">🏡 贾湖民宿预订</view>
+  <view class="card homestay-card" wx:for="{{homestays}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+    <image src="{{item.image}}" mode="aspectFill" class="hs-img" />
+    <view class="hs-info">
+      <text class="hs-name">{{item.name}}</text>
+      <text class="hs-type">{{item.type}}</text>
+      <view class="hs-meta">
+        <text>🛏 {{item.beds}}</text>
+        <text>👤 可住{{item.capacity}}人</text>
+      </view>
+      <view class="hs-facilities">
+        <text class="fac-tag" wx:for="{{item.facilities}}" wx:key="*this" wx:for-item="f">{{f}}</text>
+      </view>
+      <view class="hs-bottom">
+        <text class="hs-price">¥{{item.price}}<text class="per">/晚</text></text>
+        <text class="hs-rating">⭐{{item.rating}} ({{item.reviews}}条评价)</text>
+      </view>
+    </view>
+  </view>
+  <view class="empty-tip" wx:if="{{homestays.length===0}}">暂无民宿房源</view>
+</view>

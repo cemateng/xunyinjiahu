@@ -1,0 +1,20 @@
+/* 音频播放器组件样式 */
+.audio-panel {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #FFFBF5; border-radius: 28rpx 28rpx 0 0;
+  padding: 28rpx 36rpx 48rpx; z-index: 999;
+  box-shadow: 0 -4rpx 24rpx rgba(0,0,0,0.12);
+  border-top: 1rpx solid rgba(180, 150, 120, 0.12);
+}
+.audio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18rpx; }
+.audio-title { font-size: 34rpx; font-weight: 700; color: var(--text); }
+.audio-close { font-size: 40rpx; color: #B8A898; padding: 8rpx; }
+.audio-time { display: flex; justify-content: space-between; font-size: 22rpx; color: #B8A898; margin-top: -10rpx; }
+.audio-controls { display: flex; justify-content: center; align-items: center; gap: 64rpx; margin-top: 18rpx; }
+.ctrl-btn { font-size: 48rpx; padding: 12rpx; color: var(--text); }
+.play-btn {
+  font-size: 68rpx; color: var(--accent);
+  width: 100rpx; height: 100rpx; border-radius: 50%;
+  background: rgba(198, 123, 75, 0.1);
+  display: flex; align-items: center; justify-content: center;
+}

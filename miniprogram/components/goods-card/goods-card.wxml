@@ -1,0 +1,11 @@
+<view class="goods-card" bindtap="onTap">
+  <image src="{{goods.image}}" mode="aspectFill" class="goods-img" />
+  <view class="goods-info">
+    <text class="goods-name">{{goods.name}}</text>
+    <view class="goods-price-row">
+      <text class="goods-price">¥{{goods.price}}</text>
+      <text class="goods-original" wx:if="{{goods.originalPrice}}">¥{{goods.originalPrice}}</text>
+    </view>
+    <text class="goods-sales">已售 {{goods.sales}}</text>
+  </view>
+</view>

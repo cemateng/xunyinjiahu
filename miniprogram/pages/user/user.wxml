@@ -1,0 +1,65 @@
+<!-- 个人中心页面 -->
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card card">
+    <image src="{{userInfo.avatarUrl}}" class="avatar" mode="aspectFill" />
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickName}}</text>
+      <text class="phone">{{userInfo.phone}}</text>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="section-title">我的订单</view>
+    <view class="menu-grid">
+      <view class="menu-item" bindtap="goOrders" data-status="0">
+        <text class="menu-icon">💳</text>
+        <text>待付款</text>
+      </view>
+      <view class="menu-item" bindtap="goOrders" data-status="1">
+        <text class="menu-icon">📦</text>
+        <text>已付款</text>
+      </view>
+      <view class="menu-item" bindtap="goOrders" data-status="2">
+        <text class="menu-icon">🚚</text>
+        <text>已发货</text>
+      </view>
+      <view class="menu-item" bindtap="goOrders" data-status="3">
+        <text class="menu-icon">✅</text>
+        <text>已完成</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 其他功能入口 -->
+  <view class="menu-list">
+    <view class="menu-row" bindtap="goVR">
+      <text>🏛️ VR云游</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-row" bindtap="goStudy">
+      <text>📚 研学预约</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-row" bindtap="goHomestay">
+      <text>🏡 民宿预订</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-row" bindtap="goLive">
+      <text>📺 直播带货</text>
+      <text class="arrow">›</text>
+    </view>
+    <view class="menu-row" bindtap="goOrders" data-status="all">
+      <text>📋 全部订单</text>
+      <text class="arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="about">
+    <text>寻音贾湖 v1.0.0</text>
+    <text class="about-desc">贾湖骨笛IP赋能漯河乡村振兴</text>
+    <text class="about-desc">笛韵新信息工程学院 出品</text>
+  </view>
+</view>

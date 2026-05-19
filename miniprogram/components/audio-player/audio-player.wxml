@@ -1,0 +1,18 @@
+<view class="audio-panel" wx:if="{{visible}}">
+  <view class="audio-header">
+    <text class="audio-title">{{title}}</text>
+    <text class="audio-close" bindtap="onClose">✕</text>
+  </view>
+  <view class="audio-progress">
+    <slider value="{{progress}}" max="100" block-size="16" bindchange="onSeek" activeColor="#8B4513" />
+    <view class="audio-time">
+      <text>{{currentTimeText}}</text>
+      <text>{{durationText}}</text>
+    </view>
+  </view>
+  <view class="audio-controls">
+    <text class="ctrl-btn" bindtap="onPrev">⏮</text>
+    <text class="ctrl-btn play-btn" bindtap="onToggle">{{playing ? '⏸' : '▶'}}</text>
+    <text class="ctrl-btn" bindtap="onNext">⏭</text>
+  </view>
+</view>

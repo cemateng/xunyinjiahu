@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/vr-tour/vr-tour",
+    "pages/study-booking/study-booking",
+    "pages/guide/guide",
+    "pages/mall/mall",
+    "pages/mall/detail/detail",
+    "pages/homestay/homestay",
+    "pages/homestay/detail/detail",
+    "pages/live/live",
+    "pages/user/user",
+    "pages/user/orders/orders"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#8B4513",
+    "navigationBarTitleText": "寻音贾湖",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f0e8"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#8B4513",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabbar/home.svg",
+        "selectedIconPath": "images/tabbar/home.svg"
+      },
+      {
+        "pagePath": "pages/guide/guide",
+        "text": "导览",
+        "iconPath": "images/tabbar/guide.svg",
+        "selectedIconPath": "images/tabbar/guide.svg"
+      },
+      {
+        "pagePath": "pages/mall/mall",
+        "text": "商城",
+        "iconPath": "images/tabbar/mall.svg",
+        "selectedIconPath": "images/tabbar/mall.svg"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/tabbar/user.svg",
+        "selectedIconPath": "images/tabbar/user.svg"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取您的位置以提供智能导览服务"
+    }
+  },
+  "requiredBackgroundModes": ["audio"],
+  "plugins": {},
+  "usingComponents": {}
+}

@@ -1,0 +1,45 @@
+<!-- VR云游页面 -->
+<view class="container">
+  <view class="section-title">VR云游贾湖</view>
+  <view class="card">
+    <text class="desc">基于高精度3D扫描与全景影像，足不出户即可漫游贾湖遗址、骨笛出土地及古村落风貌。</text>
+  </view>
+
+  <!-- 场景选择 -->
+  <view class="section-title">选择场景</view>
+  <view class="scene-list">
+    <view class="scene-card {{currentScene===index?'active':''}}"
+          wx:for="{{scenes}}" wx:key="id"
+          bindtap="switchScene" data-index="{{index}}">
+      <image src="{{item.thumb}}" mode="aspectFill" />
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- VR画布容器 -->
+  <view class="vr-container" id="vr-container">
+    <canvas
+      type="webgl"
+      id="vr-canvas"
+      class="vr-canvas"
+      bindtouchstart="onTouchStart"
+      bindtouchmove="onTouchMove"
+      bindtouchend="onTouchEnd"
+    />
+    <!-- 手势提示 -->
+    <view class="gesture-hint" wx:if="{{showHint}}">
+      <text>🖐 单指滑动旋转视角</text>
+      <text>🤏 双指缩放画面</text>
+    </view>
+  </view>
+
+  <!-- 场景信息浮层 -->
+  <view class="scene-info" wx:if="{{currentSceneInfo}}">
+    <text class="scene-name">{{currentSceneInfo.name}}</text>
+    <text class="scene-desc">{{currentSceneInfo.description}}</text>
+    <!-- 语音讲解按钮 -->
+    <view class="audio-btn" bindtap="toggleAudio">
+      {{isPlaying ? '⏸ 暂停讲解' : '▶ 语音讲解'}}
+    </view>
+  </view>
+</view>

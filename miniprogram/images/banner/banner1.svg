@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="360" viewBox="0 0 750 360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2C1810"/>
+      <stop offset="50%" stop-color="#5C2D16"/>
+      <stop offset="100%" stop-color="#3E1A0A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#D4A843" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#D4A843" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="750" height="360" fill="url(#bg)"/>
+  <rect width="750" height="360" fill="url(#glow)"/>
+  <text x="375" y="140" text-anchor="middle" font-size="100" fill="#F5E6D3" font-family="serif">🦴</text>
+  <text x="375" y="240" text-anchor="middle" font-size="36" fill="#D4A843" font-family="sans-serif" font-weight="bold">贾湖骨笛 · 九千年回响</text>
+  <line x1="200" y1="270" x2="550" y2="270" stroke="#D4A843" stroke-width="0.5" opacity="0.3"/>
+  <text x="375" y="310" text-anchor="middle" font-size="20" fill="#A89880" font-family="sans-serif">寻音贾湖 — 探索中华文明之源</text>
+</svg>

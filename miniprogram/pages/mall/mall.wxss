@@ -1,0 +1,41 @@
+/* 文创商城页面样式 */
+.cat-scroll { white-space: nowrap; margin-bottom: 20rpx; padding: 4rpx 0; }
+.cat-item {
+  display: inline-block; padding: 12rpx 28rpx; margin-right: 14rpx;
+  background: #fff; border-radius: 36rpx; font-size: 26rpx;
+  color: var(--text-light); border: 1rpx solid var(--border);
+  transition: all 0.15s;
+}
+.cat-item.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff; border-color: transparent;
+}
+
+.search-bar { margin-bottom: 18rpx; }
+.search-bar input {
+  background: #fff; border-radius: 44rpx; padding: 16rpx 30rpx;
+  font-size: 28rpx; box-shadow: 0 2rpx 12rpx rgba(107, 58, 26, 0.04);
+  border: 1rpx solid rgba(180, 150, 120, 0.1);
+}
+
+.goods-grid { display: flex; flex-wrap: wrap; gap: 18rpx; padding-bottom: 140rpx; }
+.goods-grid > goods-card { width: calc(50% - 9rpx); }
+.empty { text-align: center; color: #B8A898; padding: 140rpx 0; font-size: 28rpx; }
+
+.cart-float {
+  position: fixed; bottom: 48rpx; right: 36rpx;
+  width: 108rpx; height: 108rpx;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(107, 69, 26, 0.35);
+}
+.cart-icon { font-size: 48rpx; }
+.cart-badge {
+  position: absolute; top: 4rpx; right: 4rpx;
+  min-width: 38rpx; height: 38rpx;
+  background: var(--danger); color: #fff;
+  border-radius: 19rpx; font-size: 22rpx;
+  text-align: center; line-height: 38rpx;
+  font-weight: 700; border: 2rpx solid #fff;
+}

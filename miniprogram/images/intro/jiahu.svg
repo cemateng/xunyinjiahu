@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="500" viewBox="0 0 750 500">
+  <defs>
+    <linearGradient id="intro-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FBF7F0"/>
+      <stop offset="50%" stop-color="#F0E8D8"/>
+      <stop offset="100%" stop-color="#E8DCC8"/>
+    </linearGradient>
+  </defs>
+  <rect width="750" height="500" fill="url(#intro-bg)"/>
+  <rect x="150" y="60" width="450" height="300" rx="16" fill="#E0D0B8"/>
+  <text x="375" y="230" text-anchor="middle" font-size="120" fill="#8B5A3C">🦴</text>
+  <text x="375" y="420" text-anchor="middle" font-size="28" fill="#6B5344" font-family="sans-serif">贾湖骨笛 · 九千年文明之源</text>
+  <text x="375" y="460" text-anchor="middle" font-size="20" fill="#B8A898" font-family="sans-serif">世界上最早的可吹奏乐器</text>
+</svg>

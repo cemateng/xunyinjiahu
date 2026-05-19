@@ -1,0 +1,70 @@
+<!-- 订单页面（含购物车） -->
+<view class="container">
+  <!-- 标签切换 -->
+  <view class="tab-bar">
+    <text class="tab {{activeTab===0?'active':''}}" bindtap="switchTab" data-tab="0">购物车</text>
+    <text class="tab {{activeTab===1?'active':''}}" bindtap="switchTab" data-tab="1">我的订单</text>
+  </view>
+
+  <!-- 购物车 -->
+  <view wx:if="{{activeTab===0}}">
+    <view wx:if="{{cart.length===0}}" class="empty-tip">
+      <text class="empty-icon">🛒</text>
+      <text>购物车是空的</text>
+      <view class="btn-primary" bindtap="goMall">去逛逛</view>
+    </view>
+    <view wx:else>
+      <view class="cart-item card" wx:for="{{cart}}" wx:key="id">
+        <image src="{{item.image}}" mode="aspectFill" class="cart-img" />
+        <view class="cart-info">
+          <text class="cart-name">{{item.name}}</text>
+          <text class="cart-price">¥{{item.price}}</text>
+        </view>
+        <view class="qty-ctrl">
+          <text bindtap="decrease" data-id="{{item.id}}">−</text>
+          <text>{{item.count}}</text>
+          <text bindtap="increase" data-id="{{item.id}}">+</text>
+        </view>
+        <text class="del-btn" bindtap="removeItem" data-id="{{item.id}}">🗑</text>
+      </view>
+      <view class="cart-footer">
+        <text class="cart-total">合计：¥{{totalPrice}}</text>
+        <view class="btn-primary" bindtap="checkout">去结算</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view wx:if="{{activeTab===1}}">
+    <!-- 订单状态筛选 -->
+    <scroll-view scroll-x class="status-bar">
+      <text class="st-item {{orderStatus==='all'?'active':''}}" bindtap="filterOrders" data-status="all">全部</text>
+      <text class="st-item {{orderStatus==='0'?'active':''}}" bindtap="filterOrders" data-status="0">待付款</text>
+      <text class="st-item {{orderStatus==='1'?'active':''}}" bindtap="filterOrders" data-status="1">已付款</text>
+      <text class="st-item {{orderStatus==='2'?'active':''}}" bindtap="filterOrders" data-status="2">已发货</text>
+      <text class="st-item {{orderStatus==='3'?'active':''}}" bindtap="filterOrders" data-status="3">已完成</text>
+    </scroll-view>
+
+    <view wx:if="{{filteredOrders.length===0}}" class="empty-tip">
+      <text>暂无订单</text>
+    </view>
+    <view wx:else>
+      <view class="order-card card" wx:for="{{filteredOrders}}" wx:key="id">
+        <view class="order-header">
+          <text class="order-id">订单号：{{item.id}}</text>
+          <text class="order-status status-{{item.status}}">{{statusMap[item.status]}}</text>
+        </view>
+        <view class="order-goods" wx:for="{{item.items}}" wx:key="id" wx:for-item="g">
+          <image src="{{g.image}}" mode="aspectFill" class="order-img" />
+          <view class="order-info">
+            <text>{{g.name}}</text>
+            <text>x{{g.count}}  ¥{{g.price}}</text>
+          </view>
+        </view>
+        <view class="order-footer">
+          <text class="order-total">合计：¥{{item.total}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
