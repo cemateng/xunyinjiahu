@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>寻音贾湖 - 贾湖骨笛IP赋能漯河乡村振兴</title>
+<style>
+/* ========== 全局主题 ========== */
+:root {
+  --primary: #6D3A1A; --primary-light: #8B5A3C; --accent: #C67B4B;
+  --gold: #B8860B; --gold-light: #D4A843;
+  --bg: #F7F2E9; --white: #FFFBF5; --text: #2C1810;
+  --text-light: #6B5344; --border: #D4C4B0;
+  --bone: #FBF7F0; --cream: #FEF9F0;
+  --danger: #C0392B; --success: #2E7D32;
+  --jade: #5B8C5A; --ink: #1A1A2E;
+  --shadow-sm: 0 1px 3px rgba(107,58,26,0.06);
+  --shadow-md: 0 4px 16px rgba(107,58,26,0.10);
+  --shadow-lg: 0 8px 30px rgba(107,58,26,0.14);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: "PingFang SC", "Noto Serif SC", "Source Han Serif CN", "Microsoft YaHei", sans-serif;
+  background-color: #F7F2E9;
+  background-image:
+    /* 宣纸纹理 */
+    url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"),
+    /* 贾湖纹饰 - 骨笛与契刻符号 */
+    url("data:image/svg+xml,%3Csvg width='160' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.04' stroke='%236D3A1A' fill='none' stroke-width='0.8'%3E%3C!--骨笛--%3E%3Crect x='10' y='20' width='4' height='30' rx='2'/%3E%3Ccircle cx='12' cy='28' r='1.5'/%3E%3Ccircle cx='12' cy='40' r='1.5'/%3E%3Ccircle cx='12' cy='52' r='1.2'/%3E%3Ccircle cx='12' cy='60' r='1'/%3E%3Ccircle cx='12' cy='66' r='1'/%3E%3Ccircle cx='12' cy='72' r='0.8'/%3E%3Ccircle cx='12' cy='78' r='0.8'/%3E%3C!--契刻符号--%3E%3Cpath d='M80 15 Q90 10 100 15 Q90 20 80 15'/%3E%3Ccircle cx='90' cy='30' r='8' stroke-dasharray='3,2'/%3E%3Cpath d='M75 50 L105 50 M90 35 L90 65' stroke-width='0.6'/%3E%3Crect x='78' y='80' width='24' height='16' rx='0' stroke-width='0.7'/%3E%3Cpath d='M78 80 L90 76 L102 80'/%3E%3C!--云纹--%3E%3Cpath d='M40 100 Q50 90 60 100 Q70 110 80 100' stroke-width='1'/%3E%3Cpath d='M120 110 Q135 95 150 110' stroke-width='0.8'/%3E%3C!--稻谷--%3E%3Cpath d='M20 130 Q25 120 30 130' stroke-width='0.7'/%3E%3Cline x1='25' y1='130' x2='25' y2='145' stroke-width='0.9'/%3E%3Cpath d='M40 128 Q45 118 50 128' stroke-width='0.7'/%3E%3Cline x1='45' y1='128' x2='45' y2='143' stroke-width='0.9'/%3E%3C!--回纹--%3E%3Cpath d='M110 140 L130 140 L130 160 L110 160 Z' stroke-width='0.6' fill='none'/%3E%3Cpath d='M115 145 L125 145 L125 155 L115 155 Z' stroke-width='0.5' fill='none'/%3E%3C!--陶器纹--%3E%3Cpath d='M55 160 Q65 150 75 160' stroke-width='0.8'/%3E%3Cpath d='M58 160 L58 175 M72 160 L72 175' stroke-width='0.6'/%3E%3Cpath d='M55 175 Q65 168 75 175' stroke-width='0.8'/%3E%3C/g%3E%3C/svg%3E"),
+    /* 顶部暖金晕染 */
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.08) 0%, transparent 60%),
+    /* 底部水墨晕染 */
+    radial-gradient(ellipse 60% 40% at 30% 100%, rgba(107,58,26,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 70% 90%, rgba(139,90,60,0.03) 0%, transparent 50%);
+  color: var(--text);
+  font-size: 14px; line-height: 1.7;
+  max-width: 480px; margin: 0 auto;
+  min-height: 100vh; position: relative;
+  padding-bottom: 70px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { padding: 14px; }
+
+/* ========== 装饰性纹理 ========== */
+.texture-bg {
+  position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px; height: 100%;
+  pointer-events: none; z-index: 0; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q40 15 30 25 Q20 15 30 5Z' fill='%236D3A1A'/%3E%3Ccircle cx='30' cy='45' r='3' fill='%236D3A1A'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+/* ========== 通用组件 ========== */
+.card {
+  background: var(--white); border-radius: 14px; padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(180,150,120,0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:active { transform: scale(0.985); box-shadow: var(--shadow-md); }
+
+.section-title {
+  font-size: 17px; font-weight: 700; color: var(--text);
+  margin-bottom: 12px; padding-left: 12px;
+  border-left: 4px solid var(--accent);
+  letter-spacing: 0.5px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.section-title::before {
+  content: '◆'; font-size: 8px; color: var(--gold);
+  margin-left: -22px; margin-right: 2px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6D3A1A 0%, #8B5A3C 100%);
+  color: #fff; border: none; border-radius: 24px;
+  font-size: 15px; padding: 12px 32px; cursor: pointer;
+  display: inline-block; text-align: center;
+  font-weight: 600; letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgba(107,58,26,0.25);
+  transition: all 0.25s;
+}
+.btn-primary:active { transform: translateY(1px); box-shadow: 0 1px 4px rgba(107,58,26,0.2); }
+
+.btn-outline {
+  background: transparent; color: var(--primary);
+  border: 1.5px solid var(--primary); border-radius: 24px;
+  font-size: 14px; padding: 10px 24px; cursor: pointer;
+  font-weight: 500; transition: all 0.25s;
+}
+.btn-outline:active { background: rgba(107,58,26,0.06); }
+
+.tag {
+  display: inline-block; padding: 6px 16px; margin-right: 6px;
+  background: var(--white); border-radius: 20px;
+  font-size: 12px; color: var(--text-light);
+  cursor: pointer; border: 1px solid var(--border);
+  transition: all 0.2s; white-space: nowrap;
+}
+.tag.active {
+  background: linear-gradient(135deg, #6D3A1A, #8B5A3C);
+  color: #fff; border-color: transparent;
+}
+
+.empty-tip { text-align: center; padding: 60px 0; color: #B8A898; font-size: 14px; }
+
+/* ========== 顶部导航 ========== */
+.header {
+  background: linear-gradient(135deg, #3E1A0A 0%, #5C2D16 50%, #6D3A1A 100%);
+  color: #F5E6D3; padding: 8px 12px;
+  font-size: 15px; font-weight: 700; text-align: center;
+  position: sticky; top: 0; z-index: 50;
+  letter-spacing: 1px;
+  border-bottom: 2px solid var(--gold);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
+}
+.header-char {
+  height: 42px; width: auto; object-fit: contain;
+  flex-shrink: 0;
+}
+.header-char-left { order: 0; }
+.header-title { order: 1; flex-shrink: 1; }
+.header-char-right { order: 2; }
+.header::after {
+  content: '';
+  display: block; height: 3px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 4px, transparent 4px, transparent 8px);
+  margin-top: 6px; opacity: 0.4;
+}
+
+/* ========== 底部TabBar ========== */
+.tabbar {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px; background: rgba(255,255,255,0.97);
+  display: flex; border-top: 1px solid rgba(180,150,120,0.2);
+  z-index: 50; backdrop-filter: blur(10px);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.04);
+}
+.tabbar .tab {
+  flex: 1; text-align: center; padding: 7px 0 9px;
+  font-size: 11px; color: #B8A898; cursor: pointer;
+  transition: all 0.25s; position: relative;
+}
+.tabbar .tab .icon { font-size: 22px; display: block; margin-bottom: 2px; transition: transform 0.25s; }
+.tabbar .tab.active { color: var(--primary); font-weight: 700; }
+.tabbar .tab.active .icon { transform: translateY(-2px); }
+
+/* ========== 首页 ========== */
+.search-bar {
+  display: flex; align-items: center;
+  background: var(--white); border-radius: 24px;
+  padding: 11px 18px; margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(180,150,120,0.15);
+}
+.search-bar input { flex: 1; border: none; outline: none; font-size: 14px; background: transparent; color: var(--text); }
+.search-bar input::placeholder { color: #C4B4A4; }
+
+.banner {
+  width: 100%; height: 240px; border-radius: 16px;
+  overflow: hidden; margin-bottom: 16px; position: relative;
+  background: #2C1810 center/cover no-repeat;
+  box-shadow: var(--shadow-md);
+}
+.banner::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.75) 100%);
+  z-index: 1; pointer-events: none;
+}
+
+
+
+.banner-text {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px 16px 18px;
+  background: linear-gradient(transparent 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 100%);
+  color: #F5E6D3; font-size: 18px; font-weight: 700;
+  letter-spacing: 2px; z-index: 2; text-align: center;
+}
+.banner-dots {
+  position: absolute; bottom: 14px; right: 16px;
+  display: flex; gap: 6px; z-index: 3;
+}
+.banner-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.4); transition: all 0.3s;
+}
+.banner-dot.active { background: var(--gold); width: 18px; border-radius: 3px; }
+
+.feature-grid {
+  display: flex; flex-wrap: wrap; margin-bottom: 16px;
+  background: linear-gradient(160deg, #FDF9F2 0%, #F8F0E2 30%, #F2E8D4 70%, #FAF3E8 100%);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(184,134,11,0.15);
+  position: relative;
+}
+.feature-grid::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-110%, -50%);
+  width: 35%; height: 65%;
+  background: url('miniprogram/images/灵韵.png') center/contain no-repeat;
+  opacity: 0.25; pointer-events: none; z-index: 0;
+}
+.feature-grid::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(10%, -50%);
+  width: 35%; height: 65%;
+  background: url('miniprogram/images/清越.png') center/contain no-repeat;
+  opacity: 0.25; pointer-events: none; z-index: 0;
+}
+.feature-decor {
+  position: absolute; pointer-events: none; z-index: 0;
+  object-fit: contain; opacity: 0.16;
+}
+.fd-tl { top: 4px; left: 6px; width: 22%; max-height: 30%; }
+.fd-tr { top: 4px; right: 6px; width: 22%; max-height: 30%; }
+.fd-bl { bottom: 4px; left: 6px; width: 22%; max-height: 30%; }
+.fd-br { bottom: 4px; right: 6px; width: 22%; max-height: 30%; }
+.feature-item {
+  width: 33.33%; display: flex; flex-direction: column;
+  align-items: center; padding: 18px 0; cursor: pointer;
+  transition: all 0.25s; position: relative;
+}
+.feature-item::after {
+  content: ''; position: absolute; right: 0; top: 18%; height: 64%;
+  width: 1px; background: linear-gradient(180deg, transparent, rgba(184,134,11,0.2), transparent);
+}
+.feature-item:nth-child(3n)::after { display: none; }
+.feature-item::before {
+  content: ''; position: absolute; inset: 6px; border-radius: 12px;
+  background: transparent; transition: background 0.25s; z-index: 0;
+}
+.feature-item:active::before { background: rgba(212,168,67,0.06); }
+.feature-icon {
+  width: 52px; height: 52px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 6px;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative; z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.feature-item:active .feature-icon { transform: scale(0.9); }
+.feature-item span { font-size: 12px; color: var(--text-light); font-weight: 500; position: relative; z-index: 1; }
+
+.f-bg-1 { background: linear-gradient(135deg, #FFF8E1, #FFE082); color: #B8860B; }
+.f-bg-2 { background: linear-gradient(135deg, #E8F0E4, #B8D4B0); color: #3E6B3C; }
+.f-bg-3 { background: linear-gradient(135deg, #E8E0F0, #C8B8E0); color: #4A3A6B; }
+.f-bg-4 { background: linear-gradient(135deg, #FDE8EC, #F8B8C8); color: #8B3A4A; }
+.f-bg-5 { background: linear-gradient(135deg, #F5EDE0, #E0D0B8); color: #6B4A2A; }
+.f-bg-6 { background: linear-gradient(135deg, #FDF0E0, #F5D0A0); color: #A06020; }
+
+/* 骨笛展示区 */
+.flute-showcase {
+  background: linear-gradient(160deg, #FDF8F0 0%, #F5ECD8 20%, #EDE0C8 50%, #F0E4D0 70%, #F8F0E2 100%);
+  border-radius: 16px; padding: 24px; text-align: center;
+  margin-bottom: 16px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(184,134,11,0.25);
+}
+.flute-showcase::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    /* 金色光晕 */
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(212,168,67,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 80% 70%, rgba(184,134,11,0.05) 0%, transparent 60%),
+    /* 圆形装饰纹 */
+    url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23D4A843' stroke-width='0.5' opacity='0.25'/%3E%3Ccircle cx='20' cy='20' r='8' fill='none' stroke='%23D4A843' stroke-width='0.5' opacity='0.18'/%3E%3Ccircle cx='80' cy='60' r='20' fill='none' stroke='%23D4A843' stroke-width='0.5' opacity='0.25'/%3E%3Ccircle cx='80' cy='60' r='10' fill='none' stroke='%23D4A843' stroke-width='0.5' opacity='0.18'/%3E%3Cpath d='M30 80 Q50 70 70 80 Q50 90 30 80' fill='none' stroke='%23B8860B' stroke-width='0.6' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='%23D4A843' stroke-width='0.4' opacity='0.15' stroke-dasharray='4,3'/%3E%3C/svg%3E");
+  background-size: 100px 100px; pointer-events: none;
+}
+.flute-img-container {
+  width: 100%; max-width: 340px; height: 220px; margin: 0 auto 18px;
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 6px 24px rgba(107,58,26,0.2);
+  position: relative; z-index: 1;
+  border: 3px solid rgba(212,168,67,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.flute-img-container:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(107,58,26,0.28); }
+.flute-img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+.fs-decor {
+  position: absolute; pointer-events: none; z-index: 0;
+  object-fit: contain; opacity: 0.20;
+}
+.fsd-tl { top: 6px; left: 8px; width: 20%; max-height: 26%; opacity: 0.12 !important; }
+.fsd-tr { top: 6px; right: 8px; width: 20%; max-height: 26%; opacity: 0.12 !important; }
+.fsd-bl { bottom: 6px; left: 8px; width: 20%; max-height: 26%; }
+.fsd-br { bottom: 6px; right: 8px; width: 20%; max-height: 26%; }
+.fsd-c { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 25%; max-height: 36%; }
+.flute-showcase .desc {
+  color: var(--text-light); font-size: 13px;
+  margin-bottom: 14px; position: relative; z-index: 1;
+  line-height: 1.8;
+}
+
+/* ========== VR云游 ========== */
+.vr-viewer {
+  width: 100%; height: 420px; border-radius: 20px;
+  overflow: hidden; position: relative;
+  background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.vr-viewer::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(212,168,67,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(212,168,67,0.08) 0%, transparent 50%);
+}
+.vr-overlay { text-align: center; position: relative; z-index: 1; }
+.vr-overlay .vr-icon { font-size: 64px; display: block; margin-bottom: 12px; }
+.vr-overlay .vr-icon img {
+  width: 340px; height: 230px; object-fit: cover;
+  border-radius: 16px; display: block; margin: 0 auto;
+  box-shadow:
+    0 12px 40px rgba(0,0,0,0.5),
+    0 0 0 4px rgba(212,168,67,0.25),
+    0 0 60px rgba(212,168,67,0.12);
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+.vr-overlay .vr-icon img:active {
+  transform: scale(1.02);
+}
+.vr-overlay .vr-name { font-size: 20px; font-weight: 700; }
+.vr-overlay .vr-desc { font-size: 12px; color: #aaa; margin-top: 6px; }
+
+.scene-list { display: flex; gap: 10px; margin: 12px 0; overflow-x: auto; padding-bottom: 4px; }
+.scene-card {
+  flex-shrink: 0; width: 150px; text-align: center;
+  padding: 10px; border-radius: 14px; background: var(--white);
+  cursor: pointer; border: 2px solid transparent;
+  transition: all 0.25s; box-shadow: var(--shadow-sm);
+}
+.scene-card.active { border-color: var(--accent); box-shadow: var(--shadow-md); }
+.scene-card .thumb {
+  width: 100%; height: 80px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; margin-bottom: 6px;
+}
+.scene-thumb-1 { background: linear-gradient(135deg, #E8D5B0, #D4C4A0); }
+.scene-thumb-2 { background: linear-gradient(135deg, #C4B4A0, #A89880); }
+.scene-thumb-3 { background: linear-gradient(135deg, #D4C8B8, #C0B0A0); }
+.scene-card .name { font-size: 13px; font-weight: 600; color: var(--text); }
+
+/* ========== 导览 ========== */
+.ar-entry {
+  display: flex; align-items: center; gap: 14px;
+  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+  cursor: pointer; border-radius: 16px; padding: 16px;
+  border: 1px solid rgba(184,134,11,0.15);
+}
+.ar-icon { font-size: 36px; }
+.ar-title { font-size: 17px; font-weight: 700; color: var(--text); display: block; }
+.ar-desc { font-size: 12px; color: var(--text-light); }
+
+.map-carousel {
+  height: 260px; border-radius: 16px; overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-md); margin-bottom: 14px;
+  border: 2px solid rgba(180,150,120,0.25);
+}
+.map-slides { width: 100%; height: 100%; position: relative; }
+.map-slide {
+  position: absolute; inset: 0; opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+.map-slide.active { opacity: 1; z-index: 1; }
+.map-bg-img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+.map-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 32px 14px 14px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.65));
+  color: #F5E6D3; text-align: center;
+}
+.map-label {
+  font-size: 17px; font-weight: 700; letter-spacing: 1px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.map-address {
+  font-size: 12px; color: #D4C4B0; margin-top: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+.map-dots {
+  position: absolute; bottom: 10px; right: 12px;
+  display: flex; gap: 5px; z-index: 3;
+}
+.map-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.5); transition: all 0.3s;
+}
+.map-dot.active { background: var(--gold); width: 18px; border-radius: 3px; }
+
+.spot-item { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.spot-img {
+  width: 84px; height: 64px; border-radius: 10px;
+  flex-shrink: 0; display: flex; align-items: center;
+  justify-content: center; font-size: 28px;
+}
+.spot-bg-0 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.spot-bg-1 { background: linear-gradient(135deg, #E8E0D5, #D8D0C0); }
+.spot-bg-2 { background: linear-gradient(135deg, #EFEBE4, #E0D8C8); }
+.spot-bg-3 { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+.spot-bg-4 { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
+.spot-info { flex: 1; overflow: hidden; }
+.spot-name { font-size: 15px; font-weight: 700; display: block; }
+.spot-desc { font-size: 12px; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.play-btn {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--accent); color: #fff; border: none;
+  font-size: 15px; cursor: pointer; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(198,123,75,0.3);
+  transition: transform 0.2s;
+}
+.play-btn:active { transform: scale(1.1); }
+
+/* ========== 商城 ========== */
+.cat-scroll { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 2px; }
+.goods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.goods-card {
+  background: var(--white); border-radius: 14px; overflow: hidden;
+  cursor: pointer; box-shadow: var(--shadow-sm);
+  transition: all 0.25s; border: 1px solid rgba(180,150,120,0.1);
+}
+.goods-card:active { transform: scale(0.97); box-shadow: var(--shadow-md); }
+.goods-card .g-img {
+  width: 100%; height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; position: relative; overflow: hidden;
+}
+.g-img-bg-0 { background: linear-gradient(135deg, #F5EDE0, #E8D8C0); }
+.g-img-bg-1 { background: linear-gradient(135deg, #E8E0D5, #D8CEBC); }
+.g-img-bg-2 { background: linear-gradient(135deg, #F0EBE0, #E5DCC8); }
+.g-img-bg-3 { background: linear-gradient(135deg, #F5F0E8, #EAE0D0); }
+.goods-card .g-info { padding: 10px 12px 12px; }
+.goods-card .g-name {
+  font-size: 13px; font-weight: 700; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; color: var(--text);
+}
+.goods-card .g-price {
+  color: var(--danger); font-size: 18px; font-weight: 700;
+}
+.goods-card .g-original { color: #B8A898; font-size: 12px; text-decoration: line-through; margin-left: 6px; }
+.goods-card .g-sold { font-size: 10px; color: #B8A898; float: right; margin-top: 4px; }
+.cart-float {
+  position: fixed; bottom: 85px; right: 20px;
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; cursor: pointer; color: #fff;
+  box-shadow: 0 4px 16px rgba(107,58,26,0.35); z-index: 40;
+  transition: transform 0.25s;
+}
+.cart-float:active { transform: scale(0.9); }
+.cart-badge {
+  position: absolute; top: -3px; right: -3px;
+  min-width: 22px; height: 22px; background: var(--danger);
+  border-radius: 11px; font-size: 11px; color: #fff;
+  text-align: center; line-height: 22px; font-weight: 700;
+  border: 2px solid #fff;
+}
+
+/* ========== 详情弹窗 ========== */
+.mask {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.55); z-index: 100;
+  display: flex; align-items: flex-end;
+  backdrop-filter: blur(2px);
+}
+.panel {
+  width: 100%; max-width: 480px; max-height: 90vh;
+  background: #F7F2E9; border-radius: 20px 20px 0 0;
+  overflow-y: auto; padding: 18px; position: relative;
+  margin: 0 auto; box-shadow: 0 -4px 24px rgba(0,0,0,0.15);
+}
+.panel-close {
+  position: sticky; top: 0; float: right;
+  width: 32px; height: 32px;
+  background: rgba(0,0,0,0.25); color: #fff;
+  border-radius: 50%; border: none; font-size: 16px;
+  cursor: pointer; z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ========== 个人中心 ========== */
+.user-bg-decor {
+  position: absolute; inset: 0; pointer-events: none;
+  overflow: hidden; z-index: 0;
+}
+.user-bg-char {
+  position: absolute; bottom: 10%; width: auto;
+  opacity: 0.35; object-fit: contain;
+  filter: drop-shadow(0 0 30px rgba(212,168,67,0.3));
+}
+.user-bg-left { left: 5%; height: 45%; max-height: 280px; }
+.user-bg-right { right: 5%; height: 45%; max-height: 280px; }
+#page-user {
+  background: linear-gradient(180deg, #FFF8EC 0%, #FDF0DC 30%, #F5E8D0 60%, #EDDCC0 100%);
+}
+#page-user .card, #page-user .menu-list {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(4px);
+}
+#page-user .section-title { color: #5C2D16; }
+.user-card { display: flex; align-items: center; gap: 16px; }
+.avatar {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: linear-gradient(135deg, #E8D5C4, #D4BFA8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; box-shadow: var(--shadow-sm);
+}
+.nickname { font-size: 18px; font-weight: 700; display: block; }
+.phone { font-size: 12px; color: var(--text-light); }
+
+.menu-grid { display: flex; margin-bottom: 16px; }
+.menu-item {
+  flex: 1; text-align: center; padding: 14px 0;
+  font-size: 12px; color: var(--text-light); cursor: pointer;
+  transition: color 0.2s;
+}
+.menu-item:active { color: var(--accent); }
+.menu-item .icon { font-size: 28px; display: block; margin-bottom: 3px; }
+
+.menu-list {
+  background: var(--white); border-radius: 16px;
+  overflow: hidden; margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.menu-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 18px; border-bottom: 1px solid rgba(180,150,120,0.08);
+  font-size: 15px; cursor: pointer; transition: background 0.15s;
+}
+.menu-row:last-child { border-bottom: none; }
+.menu-row:active { background: rgba(198,123,75,0.04); }
+
+/* ========== 研学 ========== */
+.route-card {
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  margin-bottom: 14px; cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s;
+  border: 1px solid rgba(180,150,120,0.1);
+}
+.route-card:active { transform: scale(0.985); box-shadow: var(--shadow-md); }
+.route-cover {
+  width: 100%; height: 170px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; position: relative;
+}
+.route-cover::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.1));
+}
+.rc-bg-0 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+.rc-bg-1 { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+.rc-bg-2 { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+.rc-bg-3 { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
+.route-body { padding: 14px; }
+.route-name { font-size: 16px; font-weight: 700; display: block; margin-bottom: 8px; }
+.r-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+.r-tag {
+  font-size: 10px; background: #FFF8E1; color: #B8860B;
+  padding: 3px 10px; border-radius: 12px; font-weight: 500;
+}
+.route-meta { font-size: 11px; color: var(--text-light); display: flex; gap: 14px; margin-bottom: 10px; }
+.route-bottom { display: flex; justify-content: space-between; align-items: center; }
+.route-price { font-size: 22px; font-weight: 700; color: var(--danger); }
+.route-price .per { font-size: 11px; font-weight: 400; color: #B8A898; }
+.btn-book {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff; border: none; border-radius: 18px;
+  padding: 8px 20px; font-size: 13px; cursor: pointer; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(107,58,26,0.2);
+}
+
+/* ========== 民宿 ========== */
+.homestay-card {
+  padding: 0; overflow: hidden; margin-bottom: 14px; cursor: pointer;
+}
+.hs-cover {
+  width: 100%; height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 56px;
+}
+.hs-bg-0 { background: linear-gradient(135deg, #F5EDE0, #E0D0B8); }
+.hs-bg-1 { background: linear-gradient(135deg, #E8E0D5, #D4C8B0); }
+.hs-bg-2 { background: linear-gradient(135deg, #E8DCC8, #D8C8B0); }
+.hs-body { padding: 14px; }
+.hs-name { font-size: 17px; font-weight: 700; display: block; }
+.hs-type {
+  font-size: 11px; color: var(--primary);
+  background: rgba(107,58,26,0.06); padding: 3px 10px;
+  border-radius: 10px; display: inline-block; margin: 4px 0;
+}
+.hs-meta { font-size: 12px; color: var(--text-light); margin: 6px 0; }
+.hs-facilities { display: flex; gap: 4px; flex-wrap: wrap; margin: 8px 0; }
+.hs-fac {
+  font-size: 10px; background: #E8F5E9; color: var(--success);
+  padding: 3px 10px; border-radius: 10px; font-weight: 500;
+}
+.hs-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.hs-price { font-size: 22px; font-weight: 700; color: var(--danger); }
+.hs-rating { font-size: 13px; color: var(--gold); font-weight: 600; }
+
+/* ========== 直播 ========== */
+.live-placeholder { text-align: center; padding: 60px 20px; }
+.live-placeholder .live-icon { font-size: 72px; display: block; margin-bottom: 16px; }
+
+/* ========== 表单 ========== */
+.form-group { margin-bottom: 14px; }
+.form-label { font-size: 14px; font-weight: 600; display: block; margin-bottom: 5px; color: var(--text); }
+.form-input, .form-textarea {
+  width: 100%; border: 1px solid var(--border); border-radius: 10px;
+  padding: 11px 14px; font-size: 14px; background: var(--white);
+  transition: border-color 0.2s; color: var(--text);
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--accent); outline: none; }
+.form-textarea { height: 80px; resize: none; }
+.success-box { text-align: center; padding: 40px 20px; }
+.success-box .icon { font-size: 64px; display: block; margin-bottom: 12px; }
+
+/* ========== 订单/购物车 ========== */
+.tab-switch { display: flex; background: var(--white); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+.tab-switch .tab { flex: 1; text-align: center; padding: 11px; font-size: 14px; cursor: pointer; color: var(--text-light); transition: all 0.2s; }
+.tab-switch .tab.active { color: var(--primary); font-weight: 700; background: rgba(107,58,26,0.04); }
+.cart-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid rgba(180,150,120,0.1);
+}
+.cart-img {
+  width: 72px; height: 60px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; flex-shrink: 0;
+}
+.cart-info { flex: 1; }
+.cart-name { font-size: 14px; font-weight: 600; display: block; }
+.cart-price { color: var(--danger); font-weight: 700; font-size: 16px; }
+.qty-ctrl { display: flex; align-items: center; gap: 12px; }
+.qty-ctrl button {
+  width: 28px; height: 28px; border: 1.5px solid var(--border);
+  border-radius: 50%; background: var(--white); font-size: 16px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--text); transition: all 0.15s;
+}
+.qty-ctrl button:active { background: rgba(107,58,26,0.06); }
+.cart-footer { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
+.order-card {
+  background: var(--white); border-radius: 14px; padding: 14px;
+  margin-bottom: 10px; box-shadow: var(--shadow-sm);
+}
+.order-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.order-id { font-size: 11px; color: #B8A898; }
+.status-0 { color: #E67E22; font-weight:600; } .status-1 { color: #2E7D32; font-weight:600; }
+.status-2 { color: #1565C0; font-weight:600; } .status-3 { color: #B8A898; font-weight:600; }
+.order-total { text-align: right; font-weight: 700; color: var(--danger); margin-top: 10px; font-size: 16px; }
+
+/* ========== 音频播放器 ========== */
+.audio-panel {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px;
+  background: var(--white); border-radius: 18px 18px 0 0;
+  padding: 16px 20px 22px; z-index: 90;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+}
+.audio-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.audio-title { font-size: 16px; font-weight: 700; }
+.audio-close { font-size: 20px; cursor: pointer; color: #B8A898; border: none; background: none; }
+.audio-controls { display: flex; justify-content: center; align-items: center; gap: 34px; }
+.audio-controls button { border: none; background: none; font-size: 26px; cursor: pointer; color: var(--text); }
+.audio-controls .play {
+  font-size: 40px; color: var(--accent);
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(198,123,75,0.1);
+  display: flex; align-items: center; justify-content: center;
+}
+.audio-progress {
+  height: 3px; background: rgba(180,150,120,0.2);
+  border-radius: 2px; margin: 10px 0;
+}
+.audio-progress-bar { height: 100%; width: 30%; background: var(--accent); border-radius: 2px; }
+
+/* 隐藏页面 */
+.page { display: none; position: relative; }
+.page-decor {
+  position: absolute; width: 45px; height: auto;
+  opacity: 0.22; pointer-events: none; z-index: 0;
+}
+.page.active { display: block; }
+
+.about {
+  text-align: center; padding: 28px; color: #B8A898;
+  font-size: 12px; line-height: 2;
+}
+
+/* ========== 动画 ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.anim-fade { animation: fadeInUp 0.4s ease-out; }
+.anim-float { animation: float 3s ease-in-out infinite; }
+
+/* ========== 滚动条 ========== */
+::-webkit-scrollbar { height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(180,150,120,0.3); border-radius: 2px; }
+
+/* ========== 分隔装饰线 ========== */
+.divider-ornament {
+  text-align: center; margin: 8px 0 16px;
+  color: var(--gold); font-size: 12px; letter-spacing: 4px;
+}
+</style>
+</head>
+<body>
+
+<div class="texture-bg"></div>
+
+<div class="header">
+  <img src="miniprogram/images/灵韵.png" alt="灵韵" class="header-char header-char-left">
+  <span class="header-title">寻音贾湖 · 九千年回响</span>
+  <img src="miniprogram/images/清越.png" alt="清越" class="header-char header-char-right">
+</div>
+
+<!-- ==================== 首页 ==================== -->
+<div class="page active anim-fade" id="page-index">
+  <div class="container">
+    <div class="search-bar">
+      <span style="font-size:16px;margin-right:8px">🔍</span>
+      <input placeholder="搜索贾湖文化、研学路线、文创产品...">
+    </div>
+
+    <!-- Banner -->
+    <div class="banner" id="bannerEl" style="background-image:url('miniprogram/images/banner/贾湖骨笛 · 九千年回响.jpg')">
+      <div class="banner-text" id="bannerText">贾湖骨笛 · 九千年回响</div>
+      <div class="banner-dots" id="bannerDots">
+        <span class="banner-dot active"></span>
+        <span class="banner-dot"></span>
+        <span class="banner-dot"></span>
+      </div>
+    </div>
+
+    <!-- 功能入口 -->
+    <div class="feature-grid">
+      <img src="miniprogram/images/修饰元素2.png" class="feature-decor fd-tl" alt="">
+      <img src="miniprogram/images/修饰元素4.png" class="feature-decor fd-tr" alt="">
+      <img src="miniprogram/images/修饰元素8.png" class="feature-decor fd-bl" alt="">
+      <img src="miniprogram/images/修饰元素9.png" class="feature-decor fd-br" alt="">
+      <div class="feature-item" onclick="switchPage('vr-tour')">
+        <div class="feature-icon f-bg-1">🏛️</div>
+        <span>VR云游</span>
+      </div>
+      <div class="feature-item" onclick="switchPage('study-booking')">
+        <div class="feature-icon f-bg-2">📚</div>
+        <span>研学预约</span>
+      </div>
+      <div class="feature-item" onclick="switchTab('guide')">
+        <div class="feature-icon f-bg-3">🎧</div>
+        <span>智能导览</span>
+      </div>
+      <div class="feature-item" onclick="switchTab('mall')">
+        <div class="feature-icon f-bg-4">🎁</div>
+        <span>文创商城</span>
+      </div>
+      <div class="feature-item" onclick="switchPage('homestay')">
+        <div class="feature-icon f-bg-5">🏡</div>
+        <span>民宿预订</span>
+      </div>
+      <div class="feature-item" onclick="switchPage('live')">
+        <div class="feature-icon f-bg-6">📺</div>
+        <span>直播带货</span>
+      </div>
+    </div>
+
+<!-- 贾湖骨笛展示 -->
+    <div class="section-title">贾湖骨笛 · 九千年文明之源</div>
+    <div class="flute-showcase">
+      <img src="miniprogram/images/修饰元素3.png" class="fs-decor fsd-tl" alt="">
+      <img src="miniprogram/images/修饰元素5.png" class="fs-decor fsd-tr" alt="">
+      <img src="miniprogram/images/修饰元素6.png" class="fs-decor fsd-bl" alt="">
+      <img src="miniprogram/images/修饰元素2.png" class="fs-decor fsd-br" alt="">
+      <img src="miniprogram/images/修饰元素9.png" class="fs-decor fsd-c" alt="">
+      <div class="flute-img-container">
+        <img class="flute-img" src="miniprogram/images/贾湖遗址.jpg" alt="贾湖遗址" />
+      </div>
+      <div class="desc">
+        贾湖骨笛出土于河南漯河贾湖遗址，距今约9000年，是世界上最早的<br>
+        可吹奏乐器，被誉为"中华文明之源"。
+      </div>
+      <button class="btn-outline" onclick="switchTab('guide')">探索更多 →</button>
+    </div>
+
+    <div class="section-title">热门研学路线</div>
+    <div id="hotRoutes" style="display:flex;gap:10px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px"></div>
+
+    <div class="section-title">精选文创</div>
+    <div class="goods-grid" id="featuredGoods"></div>
+
+    <div class="divider-ornament">◆ ◇ ◆</div>
+  </div>
+</div>
+
+<!-- ==================== VR云游 ==================== -->
+<div class="page" id="page-vr-tour">
+  <div class="container">
+    <div class="section-title">VR云游贾湖</div>
+    <div class="card" style="font-size:13px;color:var(--text-light)">
+      🏛️ 基于高精度3D扫描与全景影像，足不出户即可漫游贾湖遗址、骨笛出土地及古村落风貌。
+    </div>
+    <div class="section-title">选择场景</div>
+    <div class="scene-list" id="sceneList"></div>
+    <div class="vr-viewer" id="vrViewer">
+      <div class="vr-overlay">
+        <span class="vr-icon" id="vrSceneIcon"><img src="miniprogram/images/贾湖遗址地图.jpg" alt="贾湖遗址全景"></span>
+        <div class="vr-name" id="vrSceneName">贾湖遗址全景</div>
+        <div class="vr-desc" id="vrSceneDesc">加载3D场景中...</div>
+      </div>
+    </div>
+    <button class="btn-primary" style="width:100%;margin-top:10px" id="audioBtn" onclick="toggleVRAudio()">▶ 语音讲解</button>
+  </div>
+</div>
+
+<!-- ==================== 智能导览 ==================== -->
+<div class="page" id="page-guide">
+  <div class="container">
+    <div class="ar-entry card" onclick="alert('AR识别功能开发中，需配合微信原生AR组件使用')">
+      <div class="ar-icon">📷</div>
+      <div style="flex:1">
+        <span class="ar-title">AR文物识别</span>
+        <span class="ar-desc">扫描骨笛、遗址文物，获取详细信息</span>
+      </div>
+      <span style="font-size:24px;color:var(--accent)">›</span>
+    </div>
+    <div class="section-title">📍 贾湖遗址</div>
+    <div class="map-carousel" id="mapCarousel">
+      <div class="map-slides" id="mapSlides">
+        <div class="map-slide active">
+          <img class="map-bg-img" src="miniprogram/images/贾湖遗址.jpg" alt="贾湖遗址">
+          <div class="map-overlay">
+            <div class="map-label">贾湖遗址全景</div>
+            <div class="map-address">河南省漯河市舞阳县北舞渡镇</div>
+          </div>
+        </div>
+        <div class="map-slide">
+          <img class="map-bg-img" src="miniprogram/images/贾湖遗址2.jpg" alt="贾湖遗址2">
+          <div class="map-overlay">
+            <div class="map-label">贾湖遗址风貌</div>
+            <div class="map-address">遗址发掘区全景</div>
+          </div>
+        </div>
+        <div class="map-slide">
+          <img class="map-bg-img" src="miniprogram/images/贾湖遗址1.jpg" alt="贾湖遗址1">
+          <div class="map-overlay">
+            <div class="map-label">贾湖遗址展示馆</div>
+            <div class="map-address">馆藏文物与考古成果</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-dots" id="mapDots">
+        <span class="map-dot active"></span>
+        <span class="map-dot"></span>
+        <span class="map-dot"></span>
+      </div>
+    </div>
+    <div class="section-title">附近文化景点</div>
+    <div id="spotList"></div>
+  </div>
+</div>
+
+<!-- ==================== 文创商城 ==================== -->
+<div class="page" id="page-mall">
+  <div class="container">
+    <div class="cat-scroll" id="catBar"></div>
+    <div class="search-bar">
+      <span style="font-size:16px;margin-right:8px">🔍</span>
+      <input placeholder="搜索文创商品..." oninput="filterGoods()" id="mallSearch">
+    </div>
+    <div class="goods-grid" id="mallGoods"></div>
+    <div class="divider-ornament">◆ ◇ ◆</div>
+    <div class="cart-float" onclick="showCart()">
+      <span>🛒</span>
+      <span class="cart-badge" id="cartBadge" style="display:none">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 研学预约 ==================== -->
+<div class="page" id="page-study-booking">
+  <div class="container">
+    <div class="cat-scroll" id="studyTags"></div>
+    <div id="routeList"></div>
+  </div>
+</div>
+
+<!-- ==================== 民宿预订 ==================== -->
+<div class="page" id="page-homestay">
+  <div class="container">
+    <div class="section-title">🏡 贾湖民宿预订</div>
+    <div id="homestayList"></div>
+  </div>
+</div>
+
+<!-- ==================== 直播带货 ==================== -->
+<div class="page" id="page-live">
+  <div class="container">
+    <div class="section-title">📺 直播带货</div>
+    <div class="card live-placeholder">
+      <span class="live-icon">🎬</span>
+      <div style="font-size:17px;font-weight:700;margin-bottom:8px">直播功能即将上线</div>
+      <div style="font-size:13px;color:var(--text-light)">学生团队将通过直播推广贾湖特色农产品<br>敬请期待！</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== 个人中心 ==================== -->
+<div class="page" id="page-user">
+  <div class="user-bg-decor">
+    <img src="miniprogram/images/灵韵.png" alt="" class="user-bg-char user-bg-left">
+    <img src="miniprogram/images/清越.png" alt="" class="user-bg-char user-bg-right">
+  </div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="user-card card">
+      <div class="avatar"><img src="miniprogram/images/修饰元素1.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+      <div>
+        <div class="nickname">贾湖文化爱好者马奔</div>
+        <div class="phone">155****1161</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin:14px 0 8px">
+      <img src="miniprogram/images/修饰元素2.png" style="width:28px;height:auto;opacity:0.7">
+      <span class="section-title" style="margin:0">我的订单</span>
+      <img src="miniprogram/images/修饰元素3.png" style="width:28px;height:auto;opacity:0.7">
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item" onclick="showOrders(0)"><span class="icon">💳</span>待付款</div>
+      <div class="menu-item" onclick="showOrders(1)"><span class="icon">📦</span>已付款</div>
+      <div class="menu-item" onclick="showOrders(2)"><span class="icon">🚚</span>已发货</div>
+      <div class="menu-item" onclick="showOrders(3)"><span class="icon">✅</span>已完成</div>
+    </div>
+    <div class="menu-list">
+      <div class="menu-row" onclick="switchPage('vr-tour')"><span>🏛️ VR云游</span><span style="color:#ccc">›</span></div>
+      <div class="menu-row" onclick="switchPage('study-booking')"><span>📚 研学预约</span><span style="color:#ccc">›</span></div>
+      <div class="menu-row" onclick="switchPage('homestay')"><span>🏡 民宿预订</span><span style="color:#ccc">›</span></div>
+      <div class="menu-row" onclick="showOrders('all')"><span>📋 全部订单</span><span style="color:#ccc">›</span></div>
+    </div>
+    <div style="position:relative;height:80px;margin:10px 0">
+      <img src="miniprogram/images/修饰元素4.png" style="position:absolute;top:5px;left:10%;width:28px;opacity:0.55;transform:rotate(-15deg)">
+      <img src="miniprogram/images/修饰元素5.png" style="position:absolute;top:0;left:55%;width:35px;opacity:0.5;transform:rotate(20deg)">
+      <img src="miniprogram/images/修饰元素6.png" style="position:absolute;top:25px;left:30%;width:24px;opacity:0.45;transform:rotate(-8deg)">
+      <img src="miniprogram/images/修饰元素7.png" style="position:absolute;top:15px;right:15%;width:32px;opacity:0.5;transform:rotate(12deg)">
+      <img src="miniprogram/images/修饰元素8.png" style="position:absolute;top:40px;left:50%;width:26px;opacity:0.4;transform:rotate(-25deg)">
+      <img src="miniprogram/images/修饰元素9.png" style="position:absolute;top:30px;left:8%;width:30px;opacity:0.48;transform:rotate(8deg)">
+      <img src="miniprogram/images/修饰元素1.png" style="position:absolute;top:10px;right:8%;width:22px;opacity:0.42;transform:rotate(-18deg)">
+      <img src="miniprogram/images/修饰元素2.png" style="position:absolute;top:50px;right:20%;width:28px;opacity:0.45;transform:rotate(15deg)">
+      <img src="miniprogram/images/修饰元素3.png" style="position:absolute;top:45px;left:22%;width:25px;opacity:0.4;transform:rotate(-10deg)">
+    </div>
+    <div class="about">
+      寻音贾湖 v1.0.0<br>
+      贾湖骨笛IP赋能漯河乡村振兴<br>
+      <span style="color:#2563EB">漯河食品工程职业大学信息工程学院 <strong style="color:#000;font-weight:900">马奔</strong> 做</span>
+    </div>
+  </div>
+</div>
+
+<!-- 底部导航 -->
+<div class="tabbar">
+  <div class="tab active" onclick="switchTab('index')"><span class="icon">🏠</span>首页</div>
+  <div class="tab" onclick="switchTab('guide')"><span class="icon">🎧</span>导览</div>
+  <div class="tab" onclick="switchTab('mall')"><span class="icon">🎁</span>商城</div>
+  <div class="tab" onclick="switchTab('user')"><span class="icon">👤</span>我的</div>
+</div>
+
+<!-- 详情弹窗容器 -->
+<div class="mask" id="modalMask" style="display:none" onclick="closeModal()">
+  <div class="panel" id="modalPanel" onclick="event.stopPropagation()"></div>
+</div>
+
+<!-- 音频面板 -->
+<div class="audio-panel" id="audioPanel" style="display:none">
+  <div class="audio-header">
+    <span class="audio-title" id="audioTitle">语音导览</span>
+    <button class="audio-close" onclick="closeAudio()">✕</button>
+  </div>
+  <div class="audio-progress"><div class="audio-progress-bar"></div></div>
+  <div class="audio-controls">
+    <button>⏮</button>
+    <button class="play" id="audioPlayBtn" onclick="toggleAudio()">▶</button>
+    <button>⏭</button>
+  </div>
+</div>
+
+<script>
+// ==================== MOCK 数据 ====================
+const MOCK = {
+  banners: [
+    { title: '贾湖骨笛 · 九千年回响', image: 'miniprogram/images/banner/贾湖骨笛 · 九千年回响.jpg' },
+    { title: 'VR云游 · 身临其境探古迹', image: 'miniprogram/images/banner/VR云游 · 身临其境探古迹.jpg' },
+    { title: '研学之旅 · 探索文明之源', image: 'miniprogram/images/banner/研学之旅 · 探索文明之源.jpg' }
+  ],
+  vrScenes: [
+    { id:1, name:'贾湖遗址全景', icon:'🏛️', image:'miniprogram/images/贾湖遗址地图.jpg', desc:'贾湖遗址位于河南省漯河市舞阳县北舞渡镇贾湖村，距今约9000-7500年，是新石器时代早期的重要遗址。遗址面积约5.5万平方米。', hotspots:['骨笛出土地','陶窑遗址'] },
+    { id:2, name:'骨笛出土地', icon:'🦴', image:'miniprogram/images/M282号墓复原区.jpg', desc:'贾湖骨笛出土于墓葬区M282号墓，共出土40余支，用丹顶鹤尺骨制成。是世界上发现最早的可吹奏乐器，改写了世界音乐史。', hotspots:['M282号墓'] },
+    { id:3, name:'贾湖古村落', icon:'🏘️', image:'miniprogram/images/贾湖古村落.jpg', desc:'复原的贾湖先民生活场景：半地穴式房屋、陶器制作、稻作农业、渔猎采集，重现9000年前的人类生活方式。', hotspots:[] }
+  ],
+  spots: [
+    { id:1, name:'贾湖遗址展示馆', brief:'展示骨笛、陶器、石器等珍贵文物', icon:'🏛️', image:'miniprogram/images/贾湖遗址.jpg', distance:120, detail:'贾湖遗址展示馆建于2015年，建筑面积3000平方米。馆内陈列贾湖遗址历年出土的骨笛、刻符龟甲、陶器等文物共计500余件，分为"文明曙光""骨笛之乡""稻作源头""契刻之谜"四大展区。' },
+    { id:2, name:'M282号墓复原区', brief:'贾湖骨笛主要出土地，随葬品丰富', icon:'⚰️', image:'miniprogram/images/M282号墓复原区.jpg', distance:200, detail:'M282号墓是贾湖遗址最重要的墓葬之一。墓中出土两支完整的七孔骨笛，是迄今发现最早的七声音阶乐器。墓主身份可能是部落首领或巫师。' },
+    { id:3, name:'骨笛制作工坊', brief:'体验骨笛制作工艺，了解远古乐器的诞生', icon:'🔨', image:'miniprogram/images/骨笛制作工坊.jpg', distance:350, detail:'在传承人指导下学习骨笛制作流程：选材（丹顶鹤尺骨）、钻孔、调音。制作一支完整的骨笛约需3-4小时。' },
+    { id:4, name:'稻作文化展示区', brief:'展示贾湖先民8000年前的水稻种植遗迹', icon:'🌾', image:'miniprogram/images/稻作文化展示区.jpg', distance:420, detail:'贾湖遗址发现大量碳化稻谷遗存，证实8000多年前贾湖先民已开始种植水稻。这是中国北方最早的水稻种植证据之一。' },
+    { id:5, name:'契刻符号墙', brief:'贾湖出土的龟甲契刻符号，汉字雏形', icon:'📝', image:'miniprogram/images/契刻符号墙.jpg', distance:180, detail:'贾湖遗址出土多片刻有符号的龟甲，距今约8000年，比甲骨文早4000多年。符号包括"目"形、"日"形等，具有原始文字的特征。' }
+  ],
+  studyRoutes: [
+    { id:1, name:'贾湖骨笛文化深度研学', icon:'🎵', image:'miniprogram/images/study/贾湖骨笛文化深度研学.jpg', price:298, duration:'2天1晚', age:'8-18岁', max:40, tags:['历史文化','音乐体验','动手实践'],
+      schedule:[{day:1,items:['抵达贾湖村，开营仪式','参观贾湖遗址展示馆','专家讲座：骨笛的发现与意义','篝火晚会']},{day:2,items:['探访骨笛出土地M282号墓','骨笛制作体验工坊','学习吹奏骨笛复制品','颁发研学证书']}],
+      teacher:{name:'王教授',title:'河南省文物考古研究院研究员'}, highlights:['零距离观摩9000年骨笛','亲手制作骨笛复制品'] },
+    { id:2, name:'考古小博士·贾湖探秘之旅', icon:'⛏️', image:'miniprogram/images/study/考古小博士·贾湖探秘之旅.jpg', price:358, duration:'3天2晚', age:'10-16岁', max:30, tags:['考古体验','田野调查','科学探索'],
+      schedule:[{day:1,items:['考古知识课堂','参观遗址展示馆','模拟考古发掘体验','纪录片观影']},{day:2,items:['田野调查方法学习','遗址实地测绘','陶器修复体验','星空观测']},{day:3,items:['文物整理与记录','小组研究成果展示','颁发证书']}],
+      teacher:{name:'李博士',title:'郑州大学考古系副教授'}, highlights:['模拟考古探方发掘','真实陶器修复体验'] },
+    { id:3, name:'中华音乐之源·骨笛音乐研学', icon:'🎶', image:'miniprogram/images/study/中华音乐之源·骨笛音乐研学.jpg', price:268, duration:'1天', age:'6-15岁', max:50, tags:['音乐教育','传统文化','艺术体验'],
+      schedule:[{day:1,items:['音乐起源课堂','参观骨笛专题展览','骨笛吹奏教学','古乐合奏体验','汇报演出']}],
+      teacher:{name:'张老师',title:'中国音乐学院音乐史讲师'}, highlights:['学习吹奏复刻骨笛','体验古乐合奏'] },
+    { id:4, name:'小小农学家·贾湖稻作研学', icon:'🌱', image:'miniprogram/images/study/小小农学家·贾湖稻作研学.jpg', price:198, duration:'1天', age:'6-12岁', max:45, tags:['农业体验','自然科学','动手实践'],
+      schedule:[{day:1,items:['稻作文化课堂','参观碳化稻谷展区','传统水稻种植体验','农产品手工制作','品尝贾湖小米粥']}],
+      teacher:{name:'赵老师',title:'河南农业大学农史研究员'}, highlights:['了解8000年稻作史','下田体验传统农耕'] },
+    { id:5, name:'汉字探源·契刻符号研学', icon:'✍️', image:'miniprogram/images/study/汉字探源·契刻符号研学.jpg', price:238, duration:'1天', age:'8-14岁', max:35, tags:['文字起源','书法体验','文化传承'],
+      schedule:[{day:1,items:['汉字起源故事课堂','参观契刻符号墙','契刻符号临摹','DIY文字拓片','作品展示']}],
+      teacher:{name:'刘老师',title:'河南大学古文字学讲师'}, highlights:['触摸汉字8000年演变','手工制作拓片'] },
+    { id:6, name:'贾湖文明探源·多学科综合研学', icon:'🔬', image:'miniprogram/images/study/贾湖文明探源·多学科综合研学.jpg', price:498, duration:'3天2晚', age:'12-18岁', max:25, tags:['综合研学','学科融合','课题研究'],
+      schedule:[{day:1,items:['贾湖文明全景概述','考古、音乐、农学专题课','遗址实地考察','选题分组']},{day:2,items:['分组课题研究','实验室分析体验','数据整理讨论']},{day:3,items:['课题成果汇报','专家点评指导','颁发综合研学证书']}],
+      teacher:{name:'陈教授',title:'河南省社科院研究员'}, highlights:['多学科交叉学习','真实课题研究方法'] },
+    { id:7, name:'非遗传承·骨笛制作技艺研学', icon:'🎨', image:'miniprogram/images/study/非遗传承·骨笛制作技艺研学.jpg', price:328, duration:'2天1晚', age:'10-18岁', max:20, tags:['非遗技艺','手工制作','匠人精神'],
+      schedule:[{day:1,items:['非遗传承人见面会','骨笛选材与工艺讲解','钻孔技法学习']},{day:2,items:['独立完成骨笛制作','调音与校准','吹奏教学','获非遗证书']}],
+      teacher:{name:'贾师傅',title:'贾湖骨笛制作技艺非遗传承人'}, highlights:['跟随非遗传承人学习','独立制作一支骨笛'] },
+    { id:8, name:'贾湖文化+漯河特色一日研学', icon:'🍜', image:'miniprogram/images/study/贾湖文化+漯河特色一日研学.jpg', price:168, duration:'1天', age:'6-12岁', max:60, tags:['文化体验','美食探索','亲子互动'],
+      schedule:[{day:1,items:['贾湖遗址参观','骨笛吹奏体验','漯河特色午餐','农产品采摘','亲子手工DIY']}],
+      teacher:{name:'导游小王',title:'金牌研学导师'}, highlights:['寓教于乐','品尝地道农家美食'] },
+    { id:9, name:'数字考古·科技赋能文化遗产研学', icon:'💻', image:'miniprogram/images/study/数字考古·科技赋能文化遗产研学.jpg', price:398, duration:'2天1晚', age:'14-18岁', max:20, tags:['科技体验','数字技术','创新教育'],
+      schedule:[{day:1,items:['数字考古概论','3D扫描技术演示','无人机航拍体验']},{day:2,items:['三维建模实践','数字文物修复','成果展示']}],
+      teacher:{name:'吴工',title:'数字化技术工程师'}, highlights:['操作3D扫描仪','体验VR文物修复'] },
+    { id:10, name:'贾湖节气文化·农耕智慧研学', icon:'🌿', image:'miniprogram/images/study/贾湖节气文化·农耕智慧研学.jpg', price:218, duration:'1天', age:'6-15岁', max:40, tags:['节气文化','农耕体验','自然教育'],
+      schedule:[{day:1,items:['二十四节气与农耕课堂','贾湖先民农具参观','应季农事体验','节气美食制作','自然笔记创作']}],
+      teacher:{name:'孙老师',title:'农业文化教育讲师'}, highlights:['了解节气与农耕','品尝节气美食'] },
+    { id:11, name:'青少年领导力·贾湖户外拓展研学', icon:'🏕️', image:'miniprogram/images/study/青少年领导力·贾湖户外拓展研学.jpg', price:458, duration:'2天1晚', age:'12-18岁', max:30, tags:['户外拓展','团队协作','领导力'],
+      schedule:[{day:1,items:['团队破冰游戏','考古探方协作挑战','户外定向越野','篝火分享会']},{day:2,items:['文化传播方案策划','小组路演PK','颁奖+结营']}],
+      teacher:{name:'周教练',title:'青少年素质拓展培训师'}, highlights:['田野定向越野','文化传播策划实战'] },
+    { id:12, name:'成人之旅·贾湖文化深度体验', icon:'🍷', image:'miniprogram/images/study/成人之旅·贾湖文化深度体验.jpg', price:328, duration:'2天1晚', age:'18岁以上', max:25, tags:['深度体验','文化思考','成人研学'],
+      schedule:[{day:1,items:['贾湖文化专题讲座','遗址深度探访','非遗传承人对话','古乐雅集晚会']},{day:2,items:['骨笛制作体验','贾湖小米品鉴','文化保护研讨会']}],
+      teacher:{name:'郑研究员',title:'中国社科院考古研究所'}, highlights:['与顶级专家面对面','高端文化体验'] }
+  ],
+  goods: [
+    { id:1, name:'清越|灵韵钥匙扣挂件', category:'人物手办', price:10, image:'miniprogram/images/goods/清月灵韵钥匙扣挂件.jpg', original:20, sales:1020, stock:50, icon:'🦴', desc:'双人组合钥匙扣，一对高颜值人物造型，细节精致质感细腻。小巧轻便百搭不挑包，颜值与实用性兼备，送礼自留皆合适，氛围感满满。', images:[] },
+    { id:2, name:'「清越」人物手办', category:'人物手办', price:25, image:'miniprogram/images/goods/「清越」人物手办.jpg', original:45, sales:980, stock:200, icon:'🏺', desc:'高度还原Q版少年清越的形象，头顶的仙鹤与手中的骨笛细节精致。采用环保PVC材质与哑光漆面，质感高级。', images:[] },
+    { id:9, name:'「灵韵」人物手办', category:'人物手办', price:25, image:'miniprogram/images/goods/「灵韵」人物手办.jpg', original:45, sales:986, stock:300, icon:'🎭', desc:'完美复刻Q版少女灵韵的温婉气质，发间的鹤羽栩栩如生。环保PVC材质搭配哑光漆面，色彩柔和，将国风少女的灵动之美定格。', images:[] },
+    { id:3, name:'【九音回响笔记本套装】', category:'文具', price:39, image:'miniprogram/images/goods/【九音回响笔记本套装】.jpg', original:49, sales:667, stock:500, icon:'📎', desc:'封面印清越灵韵插画，内页暗藏文化小知识。搭配同款骨笛造型笔，让你在书写间，也能感受千年音律的魅力。', images:[] },
+    { id:10, name:'【笛韵清音手账胶带】', category:'文具', price:10, image:'miniprogram/images/goods/【笛韵清音手账胶带】.jpg', original:32, sales:656, stock:20, icon:'📏', desc:'和纸材质色彩清新，循环图案包含清越灵韵Q版形象、仙鹤、骨笛等元素。随心拼贴，装饰你的手账与生活，记录国风诗意。', images:[] },
+    { id:11, name:'【鹤鸣九音金属书签】', category:'文具', price:20, image:'miniprogram/images/goods/【鹤鸣九音金属书签】.jpg', original:28, sales:1023, stock:15, icon:'🔖', desc:'黄铜电镀搭配烤漆填色，还原清越灵韵的仙鹤骨笛元素。细节精致，国风氛围感拉满，是读书人的雅致小伴。', images:[] },
+    { id:4, name:'【鹤鸣九音刺绣情侣卫衣】', category:'特色服饰', price:150, image:'miniprogram/images/goods/【鹤鸣九音刺绣情侣卫衣】.jpg', original:230, sales:519, stock:10, icon:'👜', desc:'男女同款宽松版型，胸前精致刺绣清越与灵韵的Q版形象，点缀仙鹤与五线谱元素。纯棉面料舒适亲肤，米白色柔和百搭，日常穿搭也能彰显国风个性。', images:[] },
+    { id:5, name:'【清越款帆布袋】', category:'生活用品', price:10, image:'miniprogram/images/goods/【清越款帆布袋】.jpg', original:17, sales:2090, stock:569, icon:'✒️', desc:'清越款古风帆布袋，绘有俊朗清逸的少年形象，搭配水墨元素，面料厚实耐磨，兼具国风雅致与实用，日常通勤自带清冷氛围感。', images:[] },
+    { id:6, name:'【灵韵款帆布袋】', category:'生活用品', price:10, image:'miniprogram/images/goods/【灵韵款帆布袋】.jpg', original:17, sales:1988, stock:600, icon:'🖼️', desc:'灵韵款古风帆布袋，绘有温婉灵动的少女形象，色彩清新柔和，面料舒适耐用，兼具诗意美学与实用，出行携带尽显温柔气质。', images:[] },
+    { id:13, name:'清越款马克杯', category:'生活用品', price:15, image:'miniprogram/images/goods/清越款马克杯.jpg', original:25, sales:586, stock:890, icon:'☕', desc:'清越主题国风马克杯，凝少年清雅风骨，水墨画风高级耐看。瓷质细腻手感温润，耐高温易清洗，日常饮水氛围感十足，是兼具颜值与纪念意义的国风文创好物。', images:[] },
+    { id:14, name:'灵韵款马克杯', category:'生活用品', price:15, image:'miniprogram/images/goods/灵韵款马克杯.jpg', original:25, sales:435, stock:906, icon:'🍵', desc:'灵韵国风专属马克杯，绘温婉雅致少女意境，配色温柔灵动。釉面光滑质感出众，实用百搭，将东方诗意融入日常饮水，小众精致，收藏使用两相宜。', images:[] },
+    { id:15, name:'清越&灵韵双人抱枕', category:'生活用品', price:30, image:'miniprogram/images/goods/清越&灵韵双人抱枕.jpg', original:45, sales:368, stock:65, icon:'🛏️', desc:'国风双人抱枕融合清越俊朗身姿与灵韵温婉模样，画面唯美氛围感拉满。面料柔软亲肤，触感细腻饱满，兼具装饰性与实用性，藏中式浪漫，定格专属温柔诗意。', images:[] },
+    { id:7, name:'【笛韵清音IP主题情侣汉服】', category:'特色服饰', price:230, image:'miniprogram/images/goods/【笛韵清音IP主题情侣汉服】.jpg', original:400, sales:300, stock:23, icon:'🧣', desc:'为清越与灵韵量身设计的情侣款汉服。男生款浅蓝道袍飘逸儒雅，女生款粉色齐胸襦裙温婉灵动。衣摆与裙摆绣有仙鹤、骨笛等精致纹样，重现古典风华。', images:[] },
+    { id:12, name:'【灵韵清越国风元素情侣T恤】', category:'特色服饰', price:99, image:'miniprogram/images/goods/【灵韵清越国风元素情侣T恤】.jpg', original:160, sales:571, stock:105, icon:'👕', desc:'以简约线条勾勒清越与灵韵的可爱形象，融入仙鹤、骨笛等国风元素，形成独特的插画设计。高品质纯棉面料，经典白色百搭，是日常休闲穿搭的国风之选。', images:[] },
+    { id:8, name:'清越|灵韵·国风情侣冰箱贴', category:'人物手办', price:35, image:'miniprogram/images/goods/清越·灵韵国风情侣冰箱贴.jpg', original:45, sales:1200, stock:300, icon:'🧲', desc:'清越、灵韵国风情侣冰箱贴，一俊一柔相得益彰。清越清冷俊朗，灵韵温婉灵动，中式美学设计质感细腻，小巧精致，装点家居，藏尽雅致浪漫与古风氛围感。', images:[] },
+    { id:16, name:'贾湖骨笛仿真手办', category:'人物手办', price:350, image:'miniprogram/images/goods/贾湖骨笛仿真手办.jpg', original:500, sales:106, stock:7, icon:'🦴', desc:'这款贾湖骨笛仿真手办，复刻八千年前古乐神器，骨色温润、孔洞清晰，搭配黑檀底座，兼具历史底蕴与收藏价值，是文创爱好者的优选。', images:[] },
+  ],
+  homestays: [
+    { id:1, name:'贾湖农家小院', type:'农家小院', price:128, icon:'🏡', image:'miniprogram/images/贾湖农家小院.jpg', beds:'2张双人床', capacity:4, facilities:['WiFi','空调','独立卫浴','农家早餐','免费停车'], rating:4.8, reviews:126, desc:'位于贾湖村中心，步行至遗址展示馆仅5分钟。传统农家院落，体验地道乡村生活。' },
+    { id:2, name:'湖畔民宿·稻香居', type:'精品民宿', price:268, icon:'🌅', image:'miniprogram/images/湖畔民宿·稻香居.jpg', beds:'1张大床', capacity:2, facilities:['WiFi','空调','湖景阳台','独立卫浴','免费早餐','茶室'], rating:4.9, reviews:89, desc:'精品湖景民宿，推开窗就是稻田风光。一房一厅设计，私密舒适。提供免费自行车骑行。' },
+    { id:3, name:'古村客栈', type:'传统客栈', price:188, icon:'🏚️', image:'miniprogram/images/古村客栈.jpg', beds:'3张双人床', capacity:6, facilities:['WiFi','空调','独立卫浴','厨房','庭院','烧烤架'], rating:4.7, reviews:203, desc:'由传统民居改造的客栈，保留了老房子的木梁结构。三个独立房间，适合家庭或小团体出行。' }
+  ]
+};
+const categories = ['全部','人物手办','文具','特色服饰','生活用品'];
+const studyTags = ['全部','历史文化','音乐体验','考古体验','农业体验','科技体验','户外拓展'];
+
+// ==================== 页面切换 ====================
+let currentTab = 'index';
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const pageId = tab === 'index' ? 'page-index' : tab === 'guide' ? 'page-guide' : tab === 'mall' ? 'page-mall' : 'page-user';
+  const el = document.getElementById(pageId);
+  if (el) { el.classList.add('active'); el.classList.add('anim-fade'); }
+  document.querySelectorAll('.tabbar .tab').forEach((t,i) => {
+    const tabs = ['index','guide','mall','user'];
+    t.classList.toggle('active', tabs[i] === tab);
+  });
+  if (tab === 'mall') renderMall();
+  if (tab === 'index') { loadHotRoutes(); loadFeaturedGoods(); }
+}
+function switchPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const el = document.getElementById('page-' + page);
+  if (el) { el.classList.add('active'); el.classList.add('anim-fade'); }
+  document.querySelectorAll('.tabbar .tab').forEach(t => t.classList.remove('active'));
+  if (page === 'vr-tour') renderVRScenes();
+  if (page === 'study-booking') renderStudyRoutes();
+  if (page === 'homestay') renderHomestays();
+}
+document.querySelectorAll('.tabbar .tab').forEach(t => {
+  t.addEventListener('click', function() {
+    const tabs = ['index','guide','mall','user'];
+    const idx = Array.from(this.parentElement.children).indexOf(this);
+    switchTab(tabs[idx]);
+  });
+});
+
+// ==================== 首页渲染 ====================
+let bannerIdx = 0;
+setInterval(() => {
+  bannerIdx = (bannerIdx+1) % MOCK.banners.length;
+  const b = MOCK.banners[bannerIdx];
+  document.getElementById('bannerText').textContent = b.title;
+  document.getElementById('bannerEl').style.backgroundImage = 'url(\'' + b.image + '\')';
+  document.querySelectorAll('.banner-dot').forEach((d,i) => d.classList.toggle('active', i===bannerIdx));
+}, 4000);
+
+function loadHotRoutes() {
+  const bgClasses = ['rc-bg-0','rc-bg-1','rc-bg-2','rc-bg-3'];
+  const html = MOCK.studyRoutes.slice(0,4).map((r,i) => `
+    <div class="route-card" style="flex-shrink:0;width:170px" onclick="showRouteDetail(${r.id})">
+      <div class="route-cover ${bgClasses[i]}">${r.image ? `<img src="${r.image}" style="width:100%;height:100%;object-fit:cover" alt="${r.name}">` : r.icon}</div>
+      <div class="route-body">
+        <span class="route-name" style="font-size:13px">${r.name}</span>
+        <div class="route-bottom"><span class="route-price">¥${r.price}</span><span style="font-size:11px;color:#B8A898">${r.duration}</span></div>
+      </div>
+    </div>`).join('');
+  document.getElementById('hotRoutes').innerHTML = html;
+}
+function loadFeaturedGoods() {
+  const bgClasses = ['g-img-bg-0','g-img-bg-1','g-img-bg-2','g-img-bg-3'];
+  const html = MOCK.goods.filter(g => g.id <= 4).map((g,i) => `
+    <div class="goods-card" onclick="showGoodsDetail(${g.id})">
+      <div class="g-img ${bgClasses[i]}">${g.image ? `<img src="${g.image}" style="width:100%;height:100%;object-fit:cover" alt="${g.name}">` : g.icon}</div>
+      <div class="g-info">
+        <div class="g-name">${g.name}</div>
+        <span class="g-price">¥${g.price}</span>
+        <span class="g-original">¥${g.original}</span>
+        <span class="g-sold">已售${g.sales}</span>
+      </div>
+    </div>`).join('');
+  document.getElementById('featuredGoods').innerHTML = html;
+}
+
+// ==================== VR云游 ====================
+let currentVRScene = 0;
+let vrAudioPlaying = false;
+function renderVRScenes() {
+  const thumbClasses = ['scene-thumb-1','scene-thumb-2','scene-thumb-3'];
+  const html = MOCK.vrScenes.map((s,i) => `
+    <div class="scene-card ${i===currentVRScene?'active':''}" onclick="selectVRScene(${i})">
+      <div class="thumb ${thumbClasses[i]}">${s.image ? `<img src="${s.image}" style="width:100%;height:100%;object-fit:cover;border-radius:10px" alt="${s.name}">` : s.icon}</div>
+      <div class="name">${s.name}</div>
+    </div>`).join('');
+  document.getElementById('sceneList').innerHTML = html;
+  updateVRViewer();
+}
+function selectVRScene(i) {
+  currentVRScene = i;
+  renderVRScenes();
+}
+function updateVRViewer() {
+  const s = MOCK.vrScenes[currentVRScene];
+  document.getElementById('vrSceneName').textContent = s.name;
+  document.getElementById('vrSceneDesc').textContent = s.desc;
+  const iconEl = document.getElementById('vrSceneIcon');
+  if (s.image) {
+    iconEl.innerHTML = `<img src="${s.image}" alt="${s.name}">`;
+  } else {
+    iconEl.textContent = s.icon;
+  }
+}
+function toggleVRAudio() {
+  vrAudioPlaying = !vrAudioPlaying;
+  document.getElementById('audioBtn').textContent = vrAudioPlaying ? '⏸ 暂停讲解' : '▶ 语音讲解';
+}
+
+// ==================== 智能导览轮播 ====================
+let mapCarouselIdx = 0;
+setInterval(() => {
+  mapCarouselIdx = (mapCarouselIdx + 1) % 3;
+  document.querySelectorAll('.map-slide').forEach((s, i) => s.classList.toggle('active', i === mapCarouselIdx));
+  document.querySelectorAll('.map-dot').forEach((d, i) => d.classList.toggle('active', i === mapCarouselIdx));
+}, 4000);
+
+// ==================== 智能导览 ====================
+let audioPlaying = false;
+function renderSpots() {
+  const bgClasses = ['spot-bg-0','spot-bg-1','spot-bg-2','spot-bg-3','spot-bg-4'];
+  const html = MOCK.spots.map((s,i) => `
+    <div class="spot-item card" onclick="playSpotAudio(${s.id})">
+      <div class="spot-img ${bgClasses[i]}">${s.image ? `<img src="${s.image}" style="width:100%;height:100%;object-fit:cover;border-radius:10px" alt="${s.name}">` : s.icon}</div>
+      <div class="spot-info">
+        <span class="spot-name">${s.name}</span>
+        <span class="spot-desc">${s.brief}</span>
+        <span style="font-size:11px;color:#B8A898">距您 ${s.distance}m</span>
+      </div>
+      <button class="play-btn">▶</button>
+    </div>`).join('');
+  document.getElementById('spotList').innerHTML = html;
+}
+function playSpotAudio(id) {
+  const s = MOCK.spots.find(x => x.id === id);
+  document.getElementById('audioTitle').textContent = s.name;
+  document.getElementById('audioPanel').style.display = 'block';
+  audioPlaying = true;
+  document.getElementById('audioPlayBtn').textContent = '⏸';
+}
+function toggleAudio() {
+  audioPlaying = !audioPlaying;
+  document.getElementById('audioPlayBtn').textContent = audioPlaying ? '⏸' : '▶';
+}
+function closeAudio() {
+  audioPlaying = false;
+  document.getElementById('audioPanel').style.display = 'none';
+}
+
+// ==================== 文创商城 ====================
+let activeCat = '全部';
+function renderCatBar() {
+  document.getElementById('catBar').innerHTML = categories.map(c =>
+    `<span class="tag ${c===activeCat?'active':''}" onclick="activeCat='${c}';renderMall()">${c}</span>`).join('');
+}
+function filterGoods() {
+  const kw = (document.getElementById('mallSearch')?.value || '').toLowerCase();
+  const bgClasses = ['g-img-bg-0','g-img-bg-1','g-img-bg-2','g-img-bg-3'];
+  const list = MOCK.goods.filter(g => {
+    if (activeCat !== '全部' && g.category !== activeCat) return false;
+    if (kw && !g.name.toLowerCase().includes(kw)) return false;
+    return true;
+  });
+  document.getElementById('mallGoods').innerHTML = list.map((g,i) => `
+    <div class="goods-card" onclick="showGoodsDetail(${g.id})">
+      <div class="g-img ${bgClasses[i % bgClasses.length]}">${g.image ? `<img src="${g.image}" style="width:100%;height:100%;object-fit:cover" alt="${g.name}">` : g.icon}</div>
+      <div class="g-info">
+        <div class="g-name">${g.name}</div>
+        <span class="g-price">¥${g.price}</span>
+        <span class="g-original">¥${g.original}</span>
+        <span class="g-sold">已售${g.sales}</span>
+      </div>
+    </div>`).join('');
+}
+function renderMall() { renderCatBar(); filterGoods(); updateCartBadge(); }
+
+// ==================== 商品详情 ====================
+function showGoodsDetail(id) {
+  const g = MOCK.goods.find(x => x.id === id);
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="panel-close" onclick="closeModal()">✕</button>
+    <div style="text-align:center;padding:16px;background:linear-gradient(135deg,#F5EDE0,#E8D8C0);border-radius:14px;margin-bottom:12px">${g.image ? `<img src="${g.image}" style="width:100%;max-width:280px;border-radius:10px;display:block;margin:0 auto" alt="${g.name}">` : `<span style="font-size:64px;padding:20px;display:block">${g.icon}</span>`}</div>
+    <div class="card">
+      <div style="font-size:18px;font-weight:700">${g.name}</div>
+      <span style="font-size:12px;color:var(--text-light);background:rgba(107,58,26,0.05);padding:3px 12px;border-radius:12px;display:inline-block;margin-top:4px">${g.category}</span>
+      <div style="margin:10px 0">
+        <span style="font-size:26px;color:var(--danger);font-weight:700">¥${g.price}</span>
+        <span style="color:#B8A898;text-decoration:line-through;margin-left:8px">¥${g.original}</span>
+      </div>
+      <div style="font-size:12px;color:#B8A898">已售 ${g.sales} 件 | 库存 ${g.stock} 件</div>
+    </div>
+    <div class="section-title">商品详情</div>
+    <div class="card"><div style="color:var(--text-light);line-height:1.8">${g.desc}</div></div>
+    <div style="display:flex;gap:10px;margin-top:14px">
+      <button class="btn-outline" style="flex:1" onclick="addToCart(${g.id})">加入购物车</button>
+      <button class="btn-primary" style="flex:1" onclick="buyNow(${g.id})">立即购买</button>
+    </div>`;
+  document.getElementById('modalMask').style.display = 'flex';
+}
+function closeModal() { document.getElementById('modalMask').style.display = 'none'; }
+
+// ==================== 购物车 ====================
+function getCart() { return JSON.parse(localStorage.getItem('cart')||'[]'); }
+function saveCart(c) { localStorage.setItem('cart', JSON.stringify(c)); updateCartBadge(); }
+function addToCart(id) {
+  const g = MOCK.goods.find(x => x.id === id);
+  let cart = getCart();
+  const item = cart.find(i => i.id === id);
+  if (item) item.count++; else cart.push({id:g.id, name:g.name, price:g.price, icon:g.icon, image:g.image, count:1});
+  saveCart(cart);
+  closeModal();
+  alert('已加入购物车！');
+}
+function buyNow(id) { addToCart(id); showCart(); }
+function updateCartBadge() {
+  const cart = getCart();
+  const total = cart.reduce((s,i) => s + i.count, 0);
+  const badge = document.getElementById('cartBadge');
+  if (total > 0) { badge.style.display = 'block'; badge.textContent = total; }
+  else badge.style.display = 'none';
+}
+function showCart() {
+  const cart = getCart();
+  const total = cart.reduce((s,i) => s + i.price * i.count, 0);
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="panel-close" onclick="closeModal()">✕</button>
+    <div style="font-size:18px;font-weight:700;margin-bottom:14px">🛒 购物车</div>
+    ${cart.length === 0 ? '<div class="empty-tip">购物车是空的</div>' : cart.map(i => `
+      <div class="cart-item">
+        <div class="cart-img" style="background:linear-gradient(135deg,#F5EDE0,#E8D8C0)">${i.image ? `<img src="${i.image}" style="width:100%;height:100%;object-fit:cover;border-radius:8px" alt="${i.name}">` : i.icon}</div>
+        <div class="cart-info"><span class="cart-name">${i.name}</span><span class="cart-price">¥${i.price}</span></div>
+        <div class="qty-ctrl">
+          <button onclick="updateCartItem(${i.id}, ${i.count-1})">−</button>
+          <span>${i.count}</span>
+          <button onclick="updateCartItem(${i.id}, ${i.count+1})">+</button>
+        </div>
+        <button style="border:none;background:none;font-size:18px;cursor:pointer" onclick="removeCartItem(${i.id})">🗑</button>
+      </div>`).join('')}
+    ${cart.length > 0 ? `<div class="cart-footer"><span style="font-size:16px;color:var(--danger);font-weight:700">合计：¥${total}</span><button class="btn-primary" onclick="checkout()">去结算</button></div>` : ''}`;
+  document.getElementById('modalMask').style.display = 'flex';
+}
+function updateCartItem(id, count) {
+  let cart = getCart();
+  if (count <= 0) { cart = cart.filter(i => i.id !== id); }
+  else { const item = cart.find(i => i.id === id); if (item) item.count = count; }
+  saveCart(cart);
+  showCart();
+}
+function removeCartItem(id) {
+  let cart = getCart().filter(i => i.id !== id);
+  saveCart(cart);
+  showCart();
+}
+function checkout() {
+  const cart = getCart();
+  if (cart.length === 0) return;
+  const order = { id:'JHYX'+Date.now(), items:[...cart], total:cart.reduce((s,i)=>s+i.price*i.count,0), status:1, time:new Date().toISOString() };
+  const orders = JSON.parse(localStorage.getItem('orders')||'[]');
+  orders.unshift(order);
+  localStorage.setItem('orders', JSON.stringify(orders));
+  localStorage.removeItem('cart');
+  updateCartBadge();
+  closeModal();
+  alert('下单成功！');
+}
+
+// ==================== 订单 ====================
+function showOrders(status) {
+  switchTab('user');
+  const orders = JSON.parse(localStorage.getItem('orders')||'[]');
+  const statusMap = {0:'待付款',1:'已付款',2:'已发货',3:'已完成'};
+  const filtered = status === 'all' ? orders : orders.filter(o => o.status === parseInt(status));
+  const tabs = ['all','0','1','2','3'];
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="panel-close" onclick="closeModal()">✕</button>
+    <div style="position:relative;min-height:300px">
+      <img src="miniprogram/images/灵韵.png" style="position:absolute;top:50%;left:50%;transform:translate(calc(-50% - 60px), -50%);width:130px;height:auto;opacity:0.2;pointer-events:none;z-index:0" alt="灵韵">
+      <img src="miniprogram/images/清越.png" style="position:absolute;top:50%;left:50%;transform:translate(calc(-50% + 60px), -50%);width:130px;height:auto;opacity:0.2;pointer-events:none;z-index:0" alt="清越">
+      <div style="position:relative;z-index:1">
+        <div style="font-size:18px;font-weight:700;margin-bottom:14px">📋 我的订单</div>
+        <div style="display:flex;gap:4px;margin-bottom:12px;overflow-x:auto">
+          ${['全部','待付款','已付款','已发货','已完成'].map((t,i) =>
+            `<span class="tag ${status===tabs[i]?'active':''}" onclick="showOrders('${tabs[i]}')">${t}</span>`).join('')}
+        </div>
+        ${filtered.length === 0 ? '<div class="empty-tip">暂无订单</div>' : filtered.map(o => `
+          <div class="order-card">
+            <div class="order-header"><span class="order-id">${o.id}</span><span class="status-${o.status}">${statusMap[o.status]}</span></div>
+            ${o.items.map(g => `<div style="display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12px">${g.image ? `<img src="${g.image}" style="width:40px;height:32px;object-fit:cover;border-radius:4px;flex-shrink:0" alt="${g.name}">` : `<span style="font-size:22px">${g.icon}</span>`}<span style="flex:1">${g.name}</span><span>x${g.count} ¥${g.price}</span></div>`).join('')}
+            <div class="order-total">合计：¥${o.total}</div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  document.getElementById('modalMask').style.display = 'flex';
+}
+
+// ==================== 研学预约 ====================
+let studyActiveTag = '全部';
+function renderStudyTags() {
+  document.getElementById('studyTags').innerHTML = studyTags.map(t =>
+    `<span class="tag ${t===studyActiveTag?'active':''}" onclick="studyActiveTag='${t}';renderStudyRoutes()">${t}</span>`).join('');
+}
+function renderStudyRoutes() {
+  const bgClasses = ['rc-bg-0','rc-bg-1','rc-bg-2','rc-bg-3'];
+  const list = studyActiveTag === '全部' ? MOCK.studyRoutes : MOCK.studyRoutes.filter(r => r.tags.includes(studyActiveTag));
+  document.getElementById('routeList').innerHTML = list.map((r,i) => `
+    <div class="route-card" onclick="showRouteDetail(${r.id})">
+      <div class="route-cover ${bgClasses[i % bgClasses.length]}">${r.image ? `<img src="${r.image}" style="width:100%;height:100%;object-fit:cover" alt="${r.name}">` : r.icon}</div>
+      <div class="route-body">
+        <span class="route-name">${r.name}</span>
+        <div class="r-tags">${r.tags.map(t=>`<span class="r-tag">${t}</span>`).join('')}</div>
+        <div class="route-meta"><span>🕐 ${r.duration}</span><span>👤 ${r.age}</span><span>👥 ${r.max}人</span></div>
+        <div class="route-bottom"><span class="route-price">¥${r.price}<span class="per">/人</span></span><button class="btn-book" onclick="event.stopPropagation();showRouteDetail(${r.id})">立即预约</button></div>
+      </div>
+    </div>`).join('');
+}
+function showRouteDetail(id) {
+  const r = MOCK.studyRoutes.find(x => x.id === id);
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="panel-close" onclick="closeModal()">✕</button>
+    <div style="text-align:center;padding:16px;background:linear-gradient(135deg,#E0D5C5,#D0C0A8);border-radius:14px">${r.image ? `<img src="${r.image}" style="width:100%;max-width:320px;border-radius:10px;display:block;margin:0 auto" alt="${r.name}">` : `<span style="font-size:56px;display:block;padding:20px">${r.icon}</span>`}</div>
+    <div style="padding:12px 0"><span style="font-size:20px;font-weight:700">${r.name}</span></div>
+    <div class="r-tags" style="margin-bottom:10px">${r.tags.map(t=>`<span class="r-tag">${t}</span>`).join('')}</div>
+    <div style="font-size:12px;color:var(--text-light);display:flex;gap:14px;margin-bottom:12px"><span>🕐 ${r.duration}</span><span>👤 ${r.age}</span><span>👥 ${r.max}人</span><span style="color:var(--danger);font-weight:700;font-size:17px">¥${r.price}/人</span></div>
+    <div class="section-title">课程亮点</div>
+    ${r.highlights.map(h => `<div style="padding:5px 0;font-size:14px">✨ ${h}</div>`).join('')}
+    <div class="section-title">导师</div>
+    <div class="card" style="display:flex;align-items:center;gap:12px"><div class="avatar" style="font-size:22px">👨‍🏫</div><div><span style="font-weight:700">${r.teacher.name}</span><br><span style="font-size:12px;color:var(--text-light)">${r.teacher.title}</span></div></div>
+    <div class="section-title">行程安排</div>
+    ${r.schedule.map(d => `<div style="margin-bottom:10px"><span style="font-weight:700;color:var(--primary)">第${d.day}天</span>${d.items.map(a=>`<div style="font-size:13px;color:var(--text-light);padding-left:14px">• ${a}</div>`).join('')}</div>`).join('')}
+    <button class="btn-primary" style="width:100%;margin-top:12px" onclick="bookStudy(${r.id})">立即预约（¥${r.price}/人）</button>`;
+  document.getElementById('modalMask').style.display = 'flex';
+}
+function bookStudy(id) {
+  const r = MOCK.studyRoutes.find(x => x.id === id);
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="panel-close" onclick="closeModal()">✕</button>
+    <div style="font-size:19px;font-weight:700;text-align:center;margin-bottom:16px">研学预约</div>
+    <div style="font-size:13px;color:var(--text-light);text-align:center;margin-bottom:16px">${r.name}</div>
+    <div class="form-group"><div class="form-label">预约日期</div><input class="form-input" type="date" id="bookDate"></div>
+    <div class="form-group"><div class="form-label">人数</div><input class="form-input" type="number" placeholder="请输入人数" id="bookCount"></div>
+    <div class="form-group"><div class="form-label">联系人</div><input class="form-input" placeholder="请输入姓名" id="bookName"></div>
+    <div class="form-group"><div class="form-label">联系电话</div><input class="form-input" type="tel" placeholder="请输入手机号" id="bookPhone"></div>
+    <div class="form-group"><div class="form-label">备注</div><textarea class="form-textarea" placeholder="如有特殊需求请留言" id="bookRemark"></textarea></div>
+    <button class="btn-primary" style="width:100%" onclick="submitBooking(${id})">确认预约</button>
+    <button class="btn-outline" style="width:100%;margin-top:8px" onclick="showRouteDetail(${id})">取消</button>`;
+}
+function submitBooking(id) {
+  const date = document.getElementById('bookDate').value;
+  const count = document.getElementById('bookCount').value;
+  const name = document.getElementById('bookName').value;
+  const phone = document.getElementById('bookPhone').value;
+  if (!date || !count || !name || !phone) { alert('请填写完整信息'); return; }
+  document.getElementById('modalPanel').innerHTML = `
+    <div class="success-box"><span class="icon">🎉</span><div style="font-size:20px;font-weight:700;margin:10px 0">预约成功！</div><div style="color:var(--text-light);margin-bottom:8px">我们将尽快与您联系确认行程</div><div style="font-size:12px;color:#B8A898;background:rgba(107,58,26,0.04);display:inline-block;padding:4px 18px;border-radius:14px">预约编号：JHYX${Date.now()}</div><br><br><button class="btn-primary" onclick="closeModal()">确定</button></div>`;
+}
+
+// ==================== 民宿 ====================
+function renderHomestays() {
+  const bgClasses = ['hs-bg-0','hs-bg-1','hs-bg-2'];
+  document.getElementById('homestayList').innerHTML = MOCK.homestays.map((h,i) => `
+    <div class="homestay-card card" onclick="showHomestayDetail(${h.id})">
+      <div class="hs-cover ${bgClasses[i]}">${h.image ? `<img src="${h.image}" style="width:100%;height:100%;object-fit:cover" alt="${h.name}">` : h.icon}</div>
+      <div class="hs-body">
+        <span class="hs-name">${h.name}</span>
+        <span class="hs-type">${h.type}</span>
+        <div class="hs-meta">🛏 ${h.beds} | 👤 可住${h.capacity}人</div>
+        <div class="hs-facilities">${h.facilities.map(f=>`<span class="hs-fac">${f}</span>`).join('')}</div>
+        <div class="hs-bottom"><span class="hs-price">¥${h.price}<span style="font-size:11px;font-weight:400">/晚</span></span><span class="hs-rating">⭐${h.rating} (${h.reviews}条)</span></div>
+      </div>
+    </div>`).join('');
+}
+function showHomestayDetail(id) {
+  const h = MOCK.homestays.find(x => x.id === id);
+  document.getElementById('modalPanel').innerHTML = `
+    <button class="panel-close" onclick="closeModal()">✕</button>
+    <div style="text-align:center;padding:0;background:linear-gradient(135deg,#F5EDE0,#E0D0B8);border-radius:14px;overflow:hidden">${h.image ? `<img src="${h.image}" style="width:100%;height:200px;object-fit:cover;display:block" alt="${h.name}">` : `<span style="font-size:64px;padding:48px;display:block">${h.icon}</span>`}</div>
+    <div style="padding:12px 0"><span style="font-size:20px;font-weight:700">${h.name}</span></div>
+    <span class="hs-type">${h.type}</span>
+    <div style="font-size:13px;color:var(--text-light);margin:10px 0">🛏 ${h.beds} | 👤 可住${h.capacity}人</div>
+    <div class="section-title">设施</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">${h.facilities.map(f=>`<span class="hs-fac">${f}</span>`).join('')}</div>
+    <div class="section-title">介绍</div>
+    <div class="card"><div style="color:var(--text-light);line-height:1.8">${h.desc}</div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0"><span style="font-size:26px;color:var(--danger);font-weight:700">¥${h.price}<span style="font-size:12px;font-weight:400">/晚</span></span><span class="hs-rating">⭐${h.rating} (${h.reviews}条评价)</span></div>
+    <button class="btn-primary" style="width:100%" onclick="closeModal();alert('民宿预订功能连接中，请通过电话联系预定！')">预订房源</button>`;
+  document.getElementById('modalMask').style.display = 'flex';
+}
+
+// ==================== 初始化 ====================
+renderCatBar();
+renderSpots();
+renderStudyTags();
+loadHotRoutes();
+loadFeaturedGoods();
+updateCartBadge();
+renderMall();
+</script>
+</body>
+</html>
